@@ -1,0 +1,6 @@
+**/.sfdx/*
+**/__tests__/*
+**/*.map
+**/*.log
+# Keep source under force-app only
+mdapiout/
