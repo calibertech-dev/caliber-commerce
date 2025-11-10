@@ -16,4 +16,5 @@
         </valueSetDefinition>
         <valueSetName/>
     </valueSet>
+    <trackHistory>true</trackHistory>
 </CustomField>

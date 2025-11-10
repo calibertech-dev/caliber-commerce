@@ -6,4 +6,6 @@
     <relationshipLabel>Invoices</relationshipLabel>
     <relationshipName>Contract_Invoices</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
 </CustomField>

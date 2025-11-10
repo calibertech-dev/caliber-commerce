@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Signer__c</fullName>
+    <externalId>false</externalId>
+    <label>Company Signer</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Contracts (Company Signer)</relationshipLabel>
+    <relationshipName>Company_Signer_Contracts</relationshipName>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+    <trackHistory>true</trackHistory>
+</CustomField>

@@ -5,4 +5,5 @@
     <precision>14</precision>
     <scale>2</scale>
     <type>Currency</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

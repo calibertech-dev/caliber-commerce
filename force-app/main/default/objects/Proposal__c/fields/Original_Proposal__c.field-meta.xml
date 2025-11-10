@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Original_Proposal__c</fullName>
+    <externalId>false</externalId>
+    <label>Original Proposal</label>
+    <referenceTo>Proposal</referenceTo>
+    <relationshipLabel>Proposals (Change Order Proposals)</relationshipLabel>
+    <relationshipName>Proposal_Change_Proposals</relationshipName>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

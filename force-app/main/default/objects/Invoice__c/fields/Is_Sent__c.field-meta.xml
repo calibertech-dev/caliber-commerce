@@ -4,4 +4,5 @@
     <defaultValue>false</defaultValue>
     <label>Is Sent</label>
     <type>Checkbox</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

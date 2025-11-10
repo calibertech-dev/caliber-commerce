@@ -6,4 +6,5 @@
     <relationshipLabel>Invoices</relationshipLabel>
     <relationshipName>Opportunity_Invoices</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

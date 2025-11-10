@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Total_Price__c</fullName>
+  <label>Total Price</label>
+  <type>Currency</type>
+  <precision>16</precision>
+  <scale>2</scale>
+  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
+  <formula>ROUND( ROUND(Unit_Net__c, 2) * Quantity__c, 2 )</formula>
+</CustomField>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Quote__c</fullName>
-    <label>Quote</label>
-    <referenceTo>Quote</referenceTo>
+    <fullName>Opportunity__c</fullName>
+    <label>Opportunity</label>
+    <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>Invoices</relationshipLabel>
-    <relationshipName>Quote_Invoices</relationshipName>
+    <relationshipName>Opportunity_Invoices</relationshipName>
     <type>Lookup</type>
 </CustomField>

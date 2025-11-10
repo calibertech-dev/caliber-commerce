@@ -6,4 +6,5 @@
     <relationshipLabel>Service Address Invoices</relationshipLabel>
     <relationshipName>Service_Address_Invoices</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

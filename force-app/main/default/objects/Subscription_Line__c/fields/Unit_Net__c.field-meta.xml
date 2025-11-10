@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Unit_Net__c</fullName>
+  <label>Unit Net</label>
+  <type>Currency</type>
+  <precision>16</precision>
+  <scale>4</scale>
+  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
+  <formula>
+IF(
+  Use_Per_Unit_Pricing__c,
+  /* Discount defined per unit */
+  CASE(
+    Discount_Type__c,
+    "Fixed",       MAX(0, Unit_Price__c - Discount_Value__c),
+    "Percentage",  MAX(0, Unit_Price__c * (1 - (Discount_Value__c / 100))),
+    Unit_Price__c
+  ),
+  /* Legacy: spread fixed discount across the quantity */
+  CASE(
+    Discount_Type__c,
+    "Fixed",       MAX(0, Unit_Price__c - (Discount_Value__c / MAX(1, Quantity__c))),
+    "Percentage",  MAX(0, Unit_Price__c * (1 - (Discount_Value__c / 100))),
+    Unit_Price__c
+  )
+)
+  </formula>
+</CustomField>

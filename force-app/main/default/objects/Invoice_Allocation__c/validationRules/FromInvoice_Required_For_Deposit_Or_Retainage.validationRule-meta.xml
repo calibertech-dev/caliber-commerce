@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>FromInvoice_Required_For_Deposit_Or_Retainage</fullName>
+  <active>true</active>
+  <description>Source invoice must be set when Allocation Type is Deposit or Retainage.</description>
+  <errorConditionFormula>
+AND(
+  ISBLANK(From_Invoice__c),
+  OR(
+    TEXT(Allocation_Type__c) = "Deposit",
+    TEXT(Allocation_Type__c) = "Retainage"
+  )
+)
+  </errorConditionFormula>
+  <errorDisplayField>From_Invoice__c</errorDisplayField>
+  <errorMessage>Specify the source invoice for Deposit or Retainage allocations.</errorMessage>
+</ValidationRule>

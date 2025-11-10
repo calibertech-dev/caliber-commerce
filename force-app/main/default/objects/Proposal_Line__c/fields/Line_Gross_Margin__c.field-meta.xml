@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Line_Gross_Margin__c</fullName>
+  <label>Line Gross Margin</label>
+  <type>Percent</type>
+  <precision>5</precision>
+  <scale>2</scale>
+  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
+  <formula>
+IF(
+  Total_Price__c &gt; 0,
+  (Total_Price__c - Total_Cost__c) / Total_Price__c,
+  0
+)
+  </formula>
+</CustomField>

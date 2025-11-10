@@ -3,6 +3,7 @@
     <fullName>Invoice_Type__c</fullName>
     <label>Invoice Type</label>
     <type>Picklist</type>
+    <trackHistory>true</trackHistory>
     <valueSet>
         <valueSetDefinition>
             <sorted>true</sorted>

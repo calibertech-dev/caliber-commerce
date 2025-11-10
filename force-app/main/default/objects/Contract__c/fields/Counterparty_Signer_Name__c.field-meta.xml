@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Counterparty_Signer__c</fullName>
+    <externalId>false</externalId>
+    <label>Counterparty Signer</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Contracts (Counterparty Signer)</relationshipLabel>
+    <relationshipName>Counterparty_Signer_Contracts</relationshipName>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

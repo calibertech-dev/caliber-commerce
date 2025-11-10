@@ -5,7 +5,7 @@
     <label>Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Invoices</relationshipLabel>
-    <relationshipName>Invoices</relationshipName>
+    <relationshipName>Account_Invoices</relationshipName>
     <required>true</required>
     <trackHistory>true</trackHistory>
     <type>Lookup</type>

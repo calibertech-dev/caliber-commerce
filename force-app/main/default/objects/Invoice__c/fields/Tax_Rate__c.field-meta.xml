@@ -5,4 +5,5 @@
     <precision>3</precision>
     <scale>2</scale>
     <type>Percent</type>
+    <trackHistory>true</trackHistory>
 </CustomField>
