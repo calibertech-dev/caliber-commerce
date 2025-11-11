@@ -19,12 +19,11 @@
   </values>
   <values>
     <field>Deposit_Percent__c</field>
-    <!-- If the field stores fraction 0–1, keep 0.20. If it stores 0–100, change to 20 -->
-    <value xsi:type="xsd:double">0.20</value>
+    <value xsi:type="xsd:double">20</value>
   </values>
   <values>
     <field>Max_Amount__c</field>
-    <value xsi:nil="true"/>
+    <value xsi:type="xsd:double">4999.99</value>
   </values>
   <values>
     <field>Min_Amount__c</field>
