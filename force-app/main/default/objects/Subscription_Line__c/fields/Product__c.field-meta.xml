@@ -4,7 +4,7 @@
   <label>Product</label>
   <type>Lookup</type>
   <referenceTo>Product2</referenceTo>
-  <relationshipName>Product_Invoice_Lines</relationshipName>
-  <relationshipLabel>Invoice Lines</relationshipLabel>
+  <relationshipName>Product_Subscription_Lines</relationshipName>
+  <relationshipLabel>Subscription Lines</relationshipLabel>
   <trackHistory>true</trackHistory>
 </CustomField>

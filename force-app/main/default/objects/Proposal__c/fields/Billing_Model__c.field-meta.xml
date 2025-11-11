@@ -7,9 +7,10 @@
         <valueSetDefinition>
             <sorted>true</sorted>
             <value><fullName>Standard</fullName><default>true</default><label>Standard</label></value>
-            <value><fullName>Progress</fullName><default>true</default><label>Milestone</label></value>
+            <value><fullName>Progress</fullName><default>false</default><label>Milestone</label></value>
             <value><fullName>Recurring</fullName><default>false</default><label>Recurring</label></value>
             <value><fullName>Useage-Based</fullName><default>false</default><label>Useage-Based</label></value>
         </valueSetDefinition>
     </valueSet>
+    <trackHistory>true</trackHistory>
 </CustomField>

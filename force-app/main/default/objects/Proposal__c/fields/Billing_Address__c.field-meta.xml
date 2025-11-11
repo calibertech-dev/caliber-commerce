@@ -3,7 +3,8 @@
     <fullName>Billing_Address__c</fullName>
     <label>Billing Address</label>
     <referenceTo>Location</referenceTo>
-    <relationshipLabel>Invoices (Billing Address)</relationshipLabel>
-    <relationshipName>Billing_Address_Invoices</relationshipName>
+    <relationshipLabel>Proposals (Billing Address)</relationshipLabel>
+    <relationshipName>Billing_Address_Proposals</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

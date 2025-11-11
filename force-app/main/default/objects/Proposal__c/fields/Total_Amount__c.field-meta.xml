@@ -5,7 +5,6 @@
   <type>Currency</type>
   <precision>16</precision>
   <scale>2</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
   <formula>
 ROUND(Total_Price__c - BLANKVALUE(Discount_Amount__c,0) + BLANKVALUE(Tax_Amount__c,0), 2)
   </formula>

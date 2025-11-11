@@ -5,7 +5,6 @@
   <type>Currency</type>
   <precision>16</precision>
   <scale>2</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
   <formula>
 MAX(0, -BLANKVALUE(Balance__c, 0))
   </formula>

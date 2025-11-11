@@ -3,10 +3,10 @@
     <fullName>Source_Proposal_Line__c</fullName>
     <externalId>false</externalId>
     <label>Source Proposal Line</label>
-    <referenceTo>Proposal</referenceTo>
+    <referenceTo>Proposal_Line__c</referenceTo>
     <relationshipLabel>Proposal Lines (Change Order Proposal Lines)</relationshipLabel>
     <relationshipName>Proposal_Change_Proposal_Lines</relationshipName>
-    <required>true</required>
+    <required>false</required>
     <trackHistory>true</trackHistory>
     <type>Lookup</type>
 </CustomField>

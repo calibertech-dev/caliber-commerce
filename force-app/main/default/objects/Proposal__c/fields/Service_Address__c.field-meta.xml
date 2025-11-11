@@ -3,7 +3,8 @@
     <fullName>Service_Address__c</fullName>
     <label>Service Address</label>
     <referenceTo>Location</referenceTo>
-    <relationshipLabel>Service Address Invoices</relationshipLabel>
-    <relationshipName>Service_Address_Invoices</relationshipName>
+    <relationshipLabel>Proposals (Service Address)</relationshipLabel>
+    <relationshipName>Service_Address_Proposals</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

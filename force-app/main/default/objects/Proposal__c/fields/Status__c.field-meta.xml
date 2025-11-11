@@ -15,7 +15,6 @@
             <value><fullName>Expired</fullName><default>false</default><label>Expired</label></value>
             <value><fullName>Converted</fullName><default>false</default><label>Converted</label></value>
         </valueSetDefinition>
-        <valueSetName/>
     </valueSet>
     <trackHistory>true</trackHistory>
 </CustomField>

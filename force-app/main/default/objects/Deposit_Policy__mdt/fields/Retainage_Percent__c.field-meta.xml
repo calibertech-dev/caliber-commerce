@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retainage_Percent__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Retainage Percent</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <type>Percent</type>
+    <unique>false</unique>
+    <description>Percent of contract to be retained for final billing (optional).</description>
+</CustomField>

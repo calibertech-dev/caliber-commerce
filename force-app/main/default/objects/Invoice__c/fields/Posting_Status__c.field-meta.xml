@@ -11,7 +11,6 @@
             <value><fullName>Unposted_Adjust</fullName><default>false</default><label>Unposted Adjust</label></value>
             <value><fullName>Error</fullName><default>false</default><label>Error</label></value>
         </valueSetDefinition>
-        <valueSetName/>
     </valueSet>
     <trackHistory>true</trackHistory>
 </CustomField>

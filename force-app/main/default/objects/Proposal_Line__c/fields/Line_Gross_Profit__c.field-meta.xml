@@ -5,6 +5,5 @@
   <type>Currency</type>
   <precision>16</precision>
   <scale>2</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
   <formula>Total_Price__c - Total_Cost__c</formula>
 </CustomField>

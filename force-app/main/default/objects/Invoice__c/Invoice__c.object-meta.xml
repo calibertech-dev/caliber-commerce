@@ -12,4 +12,5 @@
     <enableActivities>true</enableActivities>
     <allowInChatterGroups>true</allowInChatterGroups>
     <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
 </CustomObject>

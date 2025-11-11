@@ -5,7 +5,6 @@
   <type>Currency</type>
   <precision>16</precision>
   <scale>2</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
   <formula>
 ROUND(Taxable_Subtotal__c * BLANKVALUE(Tax_Rate__c, 0), 2)
   </formula>

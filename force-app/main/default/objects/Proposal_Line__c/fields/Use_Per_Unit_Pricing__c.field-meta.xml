@@ -4,5 +4,5 @@
   <label>Use Per Unit Pricing</label>
   <type>Checkbox</type>
   <defaultValue>true</defaultValue>
-  <trackHistory>true</trackHistory>
+  <trackHistory>false</trackHistory>
 </CustomField>

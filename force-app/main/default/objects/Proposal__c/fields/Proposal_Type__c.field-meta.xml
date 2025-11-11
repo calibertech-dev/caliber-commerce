@@ -11,4 +11,5 @@
             <value><fullName>Change</fullName><default>false</default><label>Change</label></value>
         </valueSetDefinition>
     </valueSet>
+    <trackHistory>true</trackHistory>
 </CustomField>

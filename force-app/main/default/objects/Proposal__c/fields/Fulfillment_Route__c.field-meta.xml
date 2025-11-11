@@ -6,4 +6,5 @@
     <valueSet>
         <valueSetName>Project_Fulfillment_Route</valueSetName>
     </valueSet>
+    <trackHistory>true</trackHistory>
 </CustomField>

@@ -6,7 +6,6 @@
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Quotes</relationshipLabel>
     <relationshipName>Account_Quotes</relationshipName>
-    <required>true</required>
-    <trackHistory>true</trackHistory>
+    <required>false</required>
     <type>Lookup</type>
 </CustomField>

@@ -5,7 +5,6 @@
   <type>Currency</type>
   <precision>16</precision>
   <scale>2</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
   <formula>
 ( Total_Price__c - BLANKVALUE(Discount_Amount__c,0) ) - BLANKVALUE(Total_Cost__c,0)
   </formula>

@@ -4,7 +4,6 @@
   <label>Discount Amount</label>
   <type>Currency</type>
   <precision>16</precision>
-  <scale>2</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
+  <scale>2</scale> 
   <formula>ROUND(Subtotal__c - Total_Price__c, 2)</formula>
 </CustomField>

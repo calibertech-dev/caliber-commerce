@@ -5,7 +5,6 @@
   <type>Currency</type>
   <precision>16</precision>
   <scale>4</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
   <formula>
 IF(
   Use_Per_Unit_Pricing__c,

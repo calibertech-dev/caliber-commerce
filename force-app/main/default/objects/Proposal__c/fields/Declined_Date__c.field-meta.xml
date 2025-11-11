@@ -3,4 +3,5 @@
     <fullName>Declined_Date__c</fullName>
     <label>Declined Date</label>
     <type>DateTime</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

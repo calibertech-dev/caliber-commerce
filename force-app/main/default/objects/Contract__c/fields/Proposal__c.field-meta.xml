@@ -6,8 +6,7 @@
     <referenceTo>Proposal__c</referenceTo>
     <relationshipLabel>Contracts</relationshipLabel>
     <relationshipName>Proposal_Contracts</relationshipName>
-    <required>true</required>
+    <required>false</required>
     <trackHistory>true</trackHistory>
     <type>Lookup</type>
-    <trackHistory>true</trackHistory>
 </CustomField>

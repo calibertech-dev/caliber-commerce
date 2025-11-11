@@ -3,7 +3,7 @@
     <fullName>Opportunity__c</fullName>
     <label>Opportunity</label>
     <referenceTo>Opportunity</referenceTo>
-    <relationshipLabel>Invoices</relationshipLabel>
-    <relationshipName>Opportunity_Invoices</relationshipName>
+    <relationshipLabel>Proposals</relationshipLabel>
+    <relationshipName>Opportunity_Proposals</relationshipName>
     <type>Lookup</type>
 </CustomField>

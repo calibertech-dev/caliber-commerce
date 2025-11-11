@@ -3,7 +3,8 @@
     <fullName>Pricebook2__c</fullName>
     <label>Price Book</label>
     <referenceTo>Pricebook2</referenceTo>
-    <relationshipLabel>Invoices</relationshipLabel>
-    <relationshipName>Price_Book_Invoices</relationshipName>
+    <relationshipLabel>Proposals</relationshipLabel>
+    <relationshipName>Price_Book_Proposals</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

@@ -5,6 +5,5 @@
   <type>Currency</type>
   <precision>16</precision>
   <scale>2</scale>
-  <formulaTreatBlankAs>BlankAsZero</formulaTreatBlankAs>
   <formula>ROUND( ROUND(Unit_Price__c, 2) * Quantity__c, 2 )</formula>
 </CustomField>

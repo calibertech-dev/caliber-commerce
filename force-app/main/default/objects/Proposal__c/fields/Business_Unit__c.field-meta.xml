@@ -3,7 +3,8 @@
     <fullName>Business_Unit__c</fullName>
     <label>Business Unit</label>
     <referenceTo>Business_Unit__c</referenceTo>
-    <relationshipLabel>Business Unit Invoices</relationshipLabel>
-    <relationshipName>Business_Unit_Invoices</relationshipName>
+    <relationshipLabel>Proposals</relationshipLabel>
+    <relationshipName>Business_Unit_Proposals</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

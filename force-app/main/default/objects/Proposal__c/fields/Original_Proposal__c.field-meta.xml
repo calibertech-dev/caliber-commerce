@@ -3,10 +3,9 @@
     <fullName>Original_Proposal__c</fullName>
     <externalId>false</externalId>
     <label>Original Proposal</label>
-    <referenceTo>Proposal</referenceTo>
+    <referenceTo>Proposal__c</referenceTo>
     <relationshipLabel>Proposals (Change Order Proposals)</relationshipLabel>
     <relationshipName>Proposal_Change_Proposals</relationshipName>
-    <required>true</required>
-    <trackHistory>true</trackHistory>
+    <required>false</required>
     <type>Lookup</type>
 </CustomField>

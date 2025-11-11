@@ -14,7 +14,6 @@
             <value><fullName>Terminated</fullName><default>false</default><label>Terminated</label></value>
             <value><fullName>Archived</fullName><default>false</default><label>Archived</label></value>
         </valueSetDefinition>
-        <valueSetName/>
     </valueSet>
     <trackHistory>true</trackHistory>
 </CustomField>

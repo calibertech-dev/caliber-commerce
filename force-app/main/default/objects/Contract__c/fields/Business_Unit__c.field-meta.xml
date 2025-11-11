@@ -6,4 +6,5 @@
     <relationshipLabel>Contracts</relationshipLabel>
     <relationshipName>Business_Unit_Contracts</relationshipName>
     <type>Lookup</type>
+    <trackHistory>true</trackHistory>
 </CustomField>

@@ -14,6 +14,6 @@
             <value><fullName>Net 60</fullName><default>false</default><label>Net 60</label></value>
             <value><fullName>Custom</fullName><default>false</default><label>Custom</label></value>
         </valueSetDefinition>
-        <valueSetName/>
     </valueSet>
+    <trackHistory>true</trackHistory>
 </CustomField>

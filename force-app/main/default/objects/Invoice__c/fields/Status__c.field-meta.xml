@@ -16,7 +16,6 @@
             <value><fullName>Closed</fullName><default>false</default><label>Closed</label></value>
             <value><fullName>Voided</fullName><default>false</default><label>Voided</label></value>
         </valueSetDefinition>
-        <valueSetName/>
     </valueSet>
     <trackHistory>true</trackHistory>
 </CustomField>

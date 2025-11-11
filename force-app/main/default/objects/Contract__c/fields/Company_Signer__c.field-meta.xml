@@ -6,8 +6,8 @@
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Contracts (Company Signer)</relationshipLabel>
     <relationshipName>Company_Signer_Contracts</relationshipName>
-    <required>true</required>
+    <required>false</required>
     <trackHistory>true</trackHistory>
     <type>Lookup</type>
-    <trackHistory>true</trackHistory>
+    <deleteConstraint>SetNull</deleteConstraint>
 </CustomField>

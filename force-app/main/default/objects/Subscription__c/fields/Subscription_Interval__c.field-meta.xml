@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscription_Interval__c</fullName>
+    <label>Subscription Interval</label>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetName>Subscription_Interval</valueSetName>
+    </valueSet>
+    <trackHistory>true</trackHistory>
+</CustomField>
