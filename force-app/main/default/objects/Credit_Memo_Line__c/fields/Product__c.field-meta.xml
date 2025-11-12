@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Product__c</fullName>
+  <label>Product</label>
+  <type>Lookup</type>
+  <referenceTo>Product2</referenceTo>
+  <relationshipName>Product_Credit_Memo_Lines</relationshipName>
+  <relationshipLabel>Credit Memo Lines</relationshipLabel>
+  <trackHistory>true</trackHistory>
+</CustomField>

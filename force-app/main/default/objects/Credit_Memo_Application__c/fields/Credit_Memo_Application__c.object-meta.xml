@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+  <label>Credit Memo Application</label>
+  <pluralLabel>Credit Memo Applications</pluralLabel>
+  <nameField>
+    <type>Text</type>
+    <label>Name</label>
+  </nameField>
+  <deploymentStatus>Deployed</deploymentStatus>
+  <sharingModel>ReadWrite</sharingModel>
+  <enableActivities>false</enableActivities>
+</CustomObject>
