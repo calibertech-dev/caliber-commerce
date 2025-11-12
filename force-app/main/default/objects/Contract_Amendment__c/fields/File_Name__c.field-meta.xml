@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>File_Name__c</fullName>
+    <description>File name for generated file.</description>
+    <externalId>false</externalId>
+    <label>File Name</label>
+    <formula>
+        Name + "-" + Contract_Amendment_Title__c
+    </formula>
+    <type>Text</type>
+</CustomField>

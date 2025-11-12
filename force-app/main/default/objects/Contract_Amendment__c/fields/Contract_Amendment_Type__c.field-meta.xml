@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Contract_Amendment_Type__c</fullName>
+  <label>Amendment Type</label>
+  <type>Picklist</type>
+  <valueSet>
+    <valueSetDefinition>
+      <sorted>true</sorted>
+      <value><fullName>Contract Amendment</fullName><default>true</default><label>Contract Amendment</label></value>
+      <value><fullName>Contract Addendum</fullName><default>false</default><label>Contract Addendum</label></value>
+      <value><fullName>Change Order</fullName><default>false</default><label>Change Order</label></value>
+    </valueSetDefinition>
+  </valueSet>
+  <trackHistory>true</trackHistory>
+</CustomField>
