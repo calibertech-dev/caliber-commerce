@@ -3,9 +3,8 @@
   <label>Payment Application</label>
   <pluralLabel>Payment Applications</pluralLabel>
   <nameField>
-    <type>AutoNumber</type>
+    <type>Text</type>
     <label>Payment Application Number</label>
-    <displayFormat>PAPP-{00000000}</displayFormat>
   </nameField>
   <deploymentStatus>Deployed</deploymentStatus>
   <sharingModel>ControlledByParent</sharingModel>

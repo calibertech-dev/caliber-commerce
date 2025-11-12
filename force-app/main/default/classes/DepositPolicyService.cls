@@ -1,51 +1,51 @@
 public with sharing class DepositPolicyService {
     // =========================
-    // Config / Field Conventions
+    // Config / Field APIs
     // =========================
-    // Adjust these if your Proposal field APIs differ.
-    private static final String F_PROPOSAL_TOTAL  = 'Total_Amount__c';   // fallback to Subtotal if missing
-    private static final String F_PROPOSAL_SUBTOT = 'Subtotal__c';
-    private static final String F_PROPOSAL_BU     = 'Business_Unit__c';  // Lookup(Id)
-    private static final String F_PROPOSAL_ACCT   = 'Account__c';        // Lookup(Id)
-    private static final String F_PROPOSAL_NAME   = 'Name';
+    // Adjust these if your org differs.
+    private static final String F_PROPOSAL_TOTAL      = 'Total_Amount__c';
+    private static final String F_PROPOSAL_SUBTOTAL   = 'Subtotal__c';
+    private static final String F_PROPOSAL_BU         = 'Business_Unit__c';   // Lookup(Id)
+    private static final String F_PROPOSAL_ACCT       = 'Account__c';         // Lookup(Id)
+    private static final String F_PROPOSAL_NAME       = 'Name';
+    private static final String F_PROPOSAL_GROUPKEY   = 'Billing_Group_Key__c';
+    private static final String F_PROPOSAL_PUBHASH    = 'Public_Hash__c';     // copied if you prefer
 
     // =========================
-    // Public DTOs
+    // Public DTO
     // =========================
     public class PolicyResult {
         @AuraEnabled public Boolean found;
         @AuraEnabled public Id       proposalId;
-        @AuraEnabled public Decimal  basisAmount;           // Total or Subtotal value used
+        @AuraEnabled public Decimal  basisAmount;
         @AuraEnabled public String   basis;                 // "Total" | "Subtotal"
-        @AuraEnabled public Decimal  depositPercent;        // e.g., 20
+        @AuraEnabled public Decimal  depositPercent;        // 20 = 20%
         @AuraEnabled public Decimal  depositAmount;         // currency
-        @AuraEnabled public Decimal  retainagePercent;      // e.g., 10 (optional)
-        @AuraEnabled public String   businessUnitId;        // Id stored in CMDT
-        @AuraEnabled public String   policyDeveloperName;   // CMDT record name
-        @AuraEnabled public String   policyLabel;           // CMDT label
-        @AuraEnabled public String   reason;                // why/which rule matched
+        @AuraEnabled public Decimal  retainagePercent;      // optional
+        @AuraEnabled public String   businessUnitId;
+        @AuraEnabled public String   policyDeveloperName;
+        @AuraEnabled public String   policyLabel;
+        @AuraEnabled public String   reason;
     }
 
     // ==========
     // Test hooks
     // ==========
-    @TestVisible private static List<Deposit_Policy__mdt> policyOverride; // If set, use these instead of SOQL
-    @TestVisible private static Boolean dryRun = false; // If true, skip creating Deposit__c
+    @TestVisible private static List<Deposit_Policy__mdt> policyOverride;
+    @TestVisible private static Boolean dryRun = false;
 
     // =========================
-    // Public entry points
+    // Public API
     // =========================
-
-    /** Resolve policy and (optionally) create a Deposit__c record. */
     public static PolicyResult applyPolicy(Id proposalId, Boolean createDeposit) {
         SObject prop = [
             SELECT Id, AccountId, Business_Unit__c, Name,
-                   Total_Amount__c, Subtotal__c
+                   Total_Amount__c, Subtotal__c,
+                   Billing_Group_Key__c, Public_Hash__c
             FROM Proposal__c
             WHERE Id = :proposalId
             LIMIT 1
         ];
-
         PolicyResult res = resolvePolicyInternal(prop);
         if (!res.found) return res;
 
@@ -55,11 +55,11 @@ public with sharing class DepositPolicyService {
         return res;
     }
 
-    /** Resolve policy only (no DML). */
     public static PolicyResult previewPolicy(Id proposalId) {
         SObject prop = [
             SELECT Id, AccountId, Business_Unit__c, Name,
-                   Total_Amount__c, Subtotal__c
+                   Total_Amount__c, Subtotal__c,
+                   Billing_Group_Key__c, Public_Hash__c
             FROM Proposal__c
             WHERE Id = :proposalId
             LIMIT 1
@@ -68,7 +68,7 @@ public with sharing class DepositPolicyService {
     }
 
     // =========================
-    // Invocable (for Flows)
+    // Invocable for Flow (optional)
     // =========================
     public class ApplyInput {
         @InvocableVariable(required=true) public Id proposalId;
@@ -83,14 +83,14 @@ public with sharing class DepositPolicyService {
         @InvocableVariable public String  message;
     }
 
-    @InvocableMethod(label='Apply Deposit Policy' description='Resolves Deposit Policy CMDT for a Proposal and (optionally) creates Deposit__c')
+    @InvocableMethod(label='Apply Deposit Policy' description='Resolve Deposit Policy CMDT and optionally create Deposit__c')
     public static List<ApplyOutput> invocableApply(List<ApplyInput> inputs) {
         List<ApplyOutput> outs = new List<ApplyOutput>();
-        for (ApplyInput in : inputs) {
+        for (ApplyInput inRec : inputs) {
             ApplyOutput out = new ApplyOutput();
             try {
-                PolicyResult pr = applyPolicy(in.proposalId, /*createDeposit*/ (in.createDeposit == null ? true : in.createDeposit));
-                out.depositCreated = pr.found && !dryRun && (in.createDeposit == null || in.createDeposit);
+                PolicyResult pr = applyPolicy(inRec.proposalId, (inRec.createDeposit == null ? true : inRec.createDeposit));
+                out.depositCreated = pr.found && !dryRun && (inRec.createDeposit == null || inRec.createDeposit);
                 out.depositAmount  = pr.depositAmount;
                 out.depositPercent = pr.depositPercent;
                 out.basis          = pr.basis;
@@ -108,31 +108,25 @@ public with sharing class DepositPolicyService {
     // =========================
     // Internals
     // =========================
-
     private static PolicyResult resolvePolicyInternal(SObject proposal) {
         PolicyResult res = new PolicyResult();
         res.proposalId = (Id)proposal.get('Id');
 
-        // Basis amount selection
         Decimal total    = (Decimal) proposal.get(F_PROPOSAL_TOTAL);
-        Decimal subtotal = (Decimal) proposal.get(F_PROPOSAL_SUBTOT);
-        Boolean hasTotal = (total != null);
-        Boolean useTotal = hasTotal; // prefer Total if present; else Subtotal
-        res.basisAmount  = useTotal ? (total == null ? 0 : total) : (subtotal == null ? 0 : subtotal);
+        Decimal subtotal = (Decimal) proposal.get(F_PROPOSAL_SUBTOTAL);
+        Boolean useTotal = (total != null);
+        res.basisAmount  = (useTotal ? (total == null ? 0 : total) : (subtotal == null ? 0 : subtotal));
         res.basis        = useTotal ? 'Total' : 'Subtotal';
 
-        // BU Id on Proposal (Lookup → Id), convert to 18-char string to match CMDT text
         Id buLookupId = (Id) proposal.get(F_PROPOSAL_BU);
         String buIdStr = buLookupId == null ? null : (String)buLookupId;
 
-        // Load candidate policies
         List<Deposit_Policy__mdt> policies = (policyOverride != null)
             ? policyOverride
             : [
                 SELECT DeveloperName, Label,
                        Active__c, Basis__c,
-                       Business_Unit_Id__c,
-                       Deposit_Percent__c,
+                       Business_Unit_Id__c, Deposit_Percent__c,
                        Min_Amount__c, Max_Amount__c,
                        Priority__c, Retainage_Percent__c
                 FROM Deposit_Policy__mdt
@@ -142,20 +136,16 @@ public with sharing class DepositPolicyService {
 
         Deposit_Policy__mdt chosen;
         for (Deposit_Policy__mdt p : policies) {
-            // BU match: exact BU id OR global (blank)
             Boolean buMatch = (String.isBlank(p.Business_Unit_Id__c) || (buIdStr != null && p.Business_Unit_Id__c == buIdStr));
             if (!buMatch) continue;
 
-            // Amount range
             Decimal minAmt = p.Min_Amount__c == null ? 0 : p.Min_Amount__c;
             Decimal maxAmt = p.Max_Amount__c;
             Boolean inRange = (res.basisAmount >= minAmt) && (maxAmt == null || res.basisAmount <= maxAmt);
             if (!inRange) continue;
 
-            // Basis override at policy level (optional)
             String basis = String.isBlank(p.Basis__c) ? res.basis : p.Basis__c;
             if (basis != res.basis) {
-                // recompute basisAmount if needed
                 if (basis == 'Subtotal' && subtotal != null) {
                     res.basis = 'Subtotal';
                     res.basisAmount = subtotal;
@@ -164,8 +154,7 @@ public with sharing class DepositPolicyService {
                     res.basisAmount = total;
                 }
             }
-            chosen = p;
-            break; // thanks to ORDER BY, first match wins
+            chosen = p; break;
         }
 
         if (chosen == null) {
@@ -174,15 +163,14 @@ public with sharing class DepositPolicyService {
             return res;
         }
 
-        res.found            = true;
-        res.policyDeveloperName = chosen.DeveloperName;
-        res.policyLabel      = chosen.Label;
-        res.businessUnitId   = chosen.Business_Unit_Id__c;
-        res.depositPercent   = (chosen.Deposit_Percent__c == null ? 0 : chosen.Deposit_Percent__c);
-        res.retainagePercent = (chosen.Retainage_Percent__c == null ? 0 : chosen.Retainage_Percent__c);
-        res.depositAmount    = roundCurrency(res.basisAmount * (res.depositPercent / 100));
-
-        res.reason = 'Matched ' + res.policyDeveloperName + ' at ' + res.depositPercent + '% on ' + res.basis;
+        res.found              = true;
+        res.policyDeveloperName= chosen.DeveloperName;
+        res.policyLabel        = chosen.Label;
+        res.businessUnitId     = chosen.Business_Unit_Id__c;
+        res.depositPercent     = (chosen.Deposit_Percent__c == null ? 0 : chosen.Deposit_Percent__c); // whole-number percent
+        res.retainagePercent   = (chosen.Retainage_Percent__c == null ? 0 : chosen.Retainage_Percent__c);
+        res.depositAmount      = roundCurrency(res.basisAmount * (res.depositPercent / 100));
+        res.reason             = 'Matched ' + res.policyDeveloperName + ' at ' + res.depositPercent + '% on ' + res.basis;
         return res;
     }
 
@@ -192,15 +180,29 @@ public with sharing class DepositPolicyService {
 
     private static Deposit__c buildDepositRecord(SObject proposal, PolicyResult res) {
         Deposit__c d = new Deposit__c();
-        d.Proposal__c       = (Id)proposal.get('Id');
-        d.Account__c        = (Id)proposal.get(F_PROPOSAL_ACCT);
-        d.Business_Unit__c  = (Id)proposal.get(F_PROPOSAL_BU);
-        d.Policy_Name__c    = res.policyDeveloperName; // Text field to snapshot
-        d.Basis__c          = res.basis;               // Picklist (Total/Subtotal)
-        d.Percent__c        = res.depositPercent;      // Number(5,2)
-        d.Amount__c         = res.depositAmount;       // Currency(16,2)
-        d.Status__c         = 'Planned';               // Planned | Paid | Applied | Refunded
-        d.Description__c    = 'Deposit for ' + (String)proposal.get(F_PROPOSAL_NAME);
+        d.Proposal__c          = (Id)proposal.get('Id');
+        d.Account__c           = (Id)proposal.get(F_PROPOSAL_ACCT);
+        d.Business_Unit__c     = (Id)proposal.get(F_PROPOSAL_BU);
+        d.Policy_Name__c       = res.policyDeveloperName;
+        d.Basis__c             = res.basis;               // "Total"|"Subtotal"
+        d.Percent__c           = res.depositPercent;      // 20 => 20%
+        d.Amount__c            = res.depositAmount;       // currency
+        d.Status__c            = 'Draft';                 // Draft | Paid | Applied | Refunded
+        d.Description__c       = 'Deposit for ' + (String)proposal.get(F_PROPOSAL_NAME);
+        d.Billing_Group_Key__c = (String)proposal.get(F_PROPOSAL_GROUPKEY);
+        // If you want to inherit proposal hash, uncomment next line; else generate a fresh one:
+        // d.Public_Hash__c    = (String)proposal.get(F_PROPOSAL_PUBHASH);
+        d.Public_Hash__c       = HashUtil.makeUrlSafeToken(22);
         return d;
+    }
+
+    // Lightweight token helper for portal links
+    public class HashUtil {
+        public static String makeUrlSafeToken(Integer bytesLen) {
+            Blob b = Crypto.generateAesKey(bytesLen == null ? 16 : bytesLen);
+            String b64 = EncodingUtil.base64Encode(b);
+            // URL-safe base64: replace +/ with -_ and strip =
+            return b64.replace('+','-').replace('/','_').replace('=','');
+        }
     }
 }

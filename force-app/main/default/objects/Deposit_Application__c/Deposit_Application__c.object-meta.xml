@@ -3,9 +3,8 @@
   <label>Deposit Application</label>
   <pluralLabel>Deposit Applications</pluralLabel>
   <nameField>
-    <type>AutoNumber</type>
+    <type>Text</type>
     <label>Deposit Application Number</label>
-    <displayFormat>DAPP-{00000000}</displayFormat>
   </nameField>
   <deploymentStatus>Deployed</deploymentStatus>
   <sharingModel>ControlledByParent</sharingModel>

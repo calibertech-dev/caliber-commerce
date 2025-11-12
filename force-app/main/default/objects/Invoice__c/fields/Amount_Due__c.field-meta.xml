@@ -6,6 +6,12 @@
   <precision>16</precision>
   <scale>2</scale>
   <formula>
-MAX(0, -BLANKVALUE(Balance__c, 0))
+MAX(
+  BLANKVALUE(Total_Amount__c, 0) -
+  BLANKVALUE(Payments_Applied__c, 0) -
+  BLANKVALUE(Deposits_Applied__c, 0) -
+  BLANKVALUE(Credits_Applied__c, 0),
+  0
+)
   </formula>
 </CustomField>
