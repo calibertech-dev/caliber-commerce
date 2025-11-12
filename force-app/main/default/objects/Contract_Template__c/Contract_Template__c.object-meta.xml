@@ -9,6 +9,7 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
     <allowInChatterGroups>true</allowInChatterGroups>
+    <sharingModel>ReadWrite</sharingModel>
     <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
 </CustomObject>

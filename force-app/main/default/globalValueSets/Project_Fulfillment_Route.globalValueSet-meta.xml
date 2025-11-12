@@ -6,4 +6,5 @@
     <customValue><fullName>Project</fullName><default>false</default><label>Project</label></customValue>
     <customValue><fullName>Service Contract</fullName><default>false</default><label>Service Contract</label></customValue>
     <customValue><fullName>Work Order</fullName><default>false</default><label>Work Order</label></customValue>
+    <description>The route this proposal will take.  e.g. Proposal → Project or Proposal → Order, etc</description>
 </GlobalValueSet>

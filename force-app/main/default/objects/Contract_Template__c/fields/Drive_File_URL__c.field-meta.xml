@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Drive_File_URL__c</fullName>
+    <label>Google Drive File URL</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+    <description>Direct link to the Google Drive template file for viewing or editing</description>
+    <inlineHelpText>The URL to view or edit this template in Google Drive. This is automatically populated when syncing from Google Drive.</inlineHelpText>
+</CustomField>

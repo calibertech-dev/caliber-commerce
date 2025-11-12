@@ -2,14 +2,13 @@ public with sharing class DepositPolicyService {
     // =========================
     // Config / Field APIs
     // =========================
-    // Adjust these if your org differs.
     private static final String F_PROPOSAL_TOTAL      = 'Total_Amount__c';
     private static final String F_PROPOSAL_SUBTOTAL   = 'Subtotal__c';
     private static final String F_PROPOSAL_BU         = 'Business_Unit__c';   // Lookup(Id)
     private static final String F_PROPOSAL_ACCT       = 'Account__c';         // Lookup(Id)
     private static final String F_PROPOSAL_NAME       = 'Name';
     private static final String F_PROPOSAL_GROUPKEY   = 'Billing_Group_Key__c';
-    private static final String F_PROPOSAL_PUBHASH    = 'Public_Hash__c';     // copied if you prefer
+    private static final String F_PROPOSAL_PUBHASH    = 'Public_Hash__c';
 
     // =========================
     // Public DTO
@@ -28,9 +27,7 @@ public with sharing class DepositPolicyService {
         @AuraEnabled public String   reason;
     }
 
-    // ==========
-    // Test hooks
-    // ==========
+    // ========== Test hooks
     @TestVisible private static List<Deposit_Policy__mdt> policyOverride;
     @TestVisible private static Boolean dryRun = false;
 
@@ -39,7 +36,7 @@ public with sharing class DepositPolicyService {
     // =========================
     public static PolicyResult applyPolicy(Id proposalId, Boolean createDeposit) {
         SObject prop = [
-            SELECT Id, AccountId, Business_Unit__c, Name,
+            SELECT Id, Account__c, Business_Unit__c, Name,
                    Total_Amount__c, Subtotal__c,
                    Billing_Group_Key__c, Public_Hash__c
             FROM Proposal__c
@@ -57,7 +54,7 @@ public with sharing class DepositPolicyService {
 
     public static PolicyResult previewPolicy(Id proposalId) {
         SObject prop = [
-            SELECT Id, AccountId, Business_Unit__c, Name,
+            SELECT Id, Account__c, Business_Unit__c, Name,
                    Total_Amount__c, Subtotal__c,
                    Billing_Group_Key__c, Public_Hash__c
             FROM Proposal__c
@@ -125,12 +122,12 @@ public with sharing class DepositPolicyService {
             ? policyOverride
             : [
                 SELECT DeveloperName, Label,
-                       Active__c, Basis__c,
+                       Is_Active__c, Basis__c,
                        Business_Unit_Id__c, Deposit_Percent__c,
                        Min_Amount__c, Max_Amount__c,
                        Priority__c, Retainage_Percent__c
                 FROM Deposit_Policy__mdt
-                WHERE Active__c = true
+                WHERE Is_Active__c = true
                 ORDER BY Priority__c DESC, Min_Amount__c DESC
               ];
 
@@ -163,14 +160,14 @@ public with sharing class DepositPolicyService {
             return res;
         }
 
-        res.found              = true;
-        res.policyDeveloperName= chosen.DeveloperName;
-        res.policyLabel        = chosen.Label;
-        res.businessUnitId     = chosen.Business_Unit_Id__c;
-        res.depositPercent     = (chosen.Deposit_Percent__c == null ? 0 : chosen.Deposit_Percent__c); // whole-number percent
-        res.retainagePercent   = (chosen.Retainage_Percent__c == null ? 0 : chosen.Retainage_Percent__c);
-        res.depositAmount      = roundCurrency(res.basisAmount * (res.depositPercent / 100));
-        res.reason             = 'Matched ' + res.policyDeveloperName + ' at ' + res.depositPercent + '% on ' + res.basis;
+        res.found               = true;
+        res.policyDeveloperName = chosen.DeveloperName;
+        res.policyLabel         = chosen.Label;
+        res.businessUnitId      = chosen.Business_Unit_Id__c;
+        res.depositPercent      = (chosen.Deposit_Percent__c == null ? 0 : chosen.Deposit_Percent__c); // whole-number percent
+        res.retainagePercent    = (chosen.Retainage_Percent__c == null ? 0 : chosen.Retainage_Percent__c);
+        res.depositAmount       = roundCurrency(res.basisAmount * (res.depositPercent / 100));
+        res.reason              = 'Matched ' + res.policyDeveloperName + ' at ' + res.depositPercent + '% on ' + res.basis;
         return res;
     }
 
@@ -190,19 +187,16 @@ public with sharing class DepositPolicyService {
         d.Status__c            = 'Draft';                 // Draft | Paid | Applied | Refunded
         d.Description__c       = 'Deposit for ' + (String)proposal.get(F_PROPOSAL_NAME);
         d.Billing_Group_Key__c = (String)proposal.get(F_PROPOSAL_GROUPKEY);
-        // If you want to inherit proposal hash, uncomment next line; else generate a fresh one:
+        // Inherit or generate a public hash
         // d.Public_Hash__c    = (String)proposal.get(F_PROPOSAL_PUBHASH);
-        d.Public_Hash__c       = HashUtil.makeUrlSafeToken(22);
+        d.Public_Hash__c       = makeUrlSafeToken(22);
         return d;
     }
 
-    // Lightweight token helper for portal links
-    public class HashUtil {
-        public static String makeUrlSafeToken(Integer bytesLen) {
-            Blob b = Crypto.generateAesKey(bytesLen == null ? 16 : bytesLen);
-            String b64 = EncodingUtil.base64Encode(b);
-            // URL-safe base64: replace +/ with -_ and strip =
-            return b64.replace('+','-').replace('/','_').replace('=','');
-        }
+    // ======= moved to top-level class scope (Apex disallows static in inner classes)
+    private static String makeUrlSafeToken(Integer bytesLen) {
+        Blob b = Crypto.generateAesKey(bytesLen == null ? 16 : bytesLen);
+        String b64 = EncodingUtil.base64Encode(b);
+        return b64.replace('+','-').replace('/','_').replace('=','');
     }
 }
