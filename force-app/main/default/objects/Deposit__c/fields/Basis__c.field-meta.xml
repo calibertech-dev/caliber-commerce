@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Basis__c</fullName>
+  <label>Basis</label>
+  <type>Picklist</type>
+  <trackHistory>true</trackHistory>
+  <valueSet>
+    <valueSetDefinition>
+      <sorted>true</sorted>
+      <value><fullName>Total</fullName><default>true</default><label>Total</label></value>
+      <value><fullName>Subtotal</fullName><default>false</default><label>Subtotal</label></value>
+    </valueSetDefinition>
+  </valueSet>
+</CustomField>
