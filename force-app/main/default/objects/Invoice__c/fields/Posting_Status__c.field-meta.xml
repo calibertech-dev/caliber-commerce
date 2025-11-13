@@ -8,7 +8,6 @@
             <sorted>true</sorted>
             <value><fullName>Unposted</fullName><default>true</default><label>Unposted</label></value>
             <value><fullName>Posted</fullName><default>false</default><label>Posted</label></value>
-            <value><fullName>Unposted_Adjust</fullName><default>false</default><label>Unposted Adjust</label></value>
             <value><fullName>Error</fullName><default>false</default><label>Error</label></value>
         </valueSetDefinition>
     </valueSet>

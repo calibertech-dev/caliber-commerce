@@ -2,8 +2,15 @@
 private class DepositPolicyServiceTest {
     @IsTest
     static void preview_and_apply_policy_works() {
+        // Arrange
         Account a = new Account(Name='Acme'); insert a;
-        Business_Unit__c bu = new Business_Unit__c(Name='CHS'); insert bu;
+        Business_Unit__c bu = new Business_Unit__c(
+            Name='CHS',
+            Customer_Service_Email__c='test@gmail.com',
+            Customer_Service_Phone__c='555-555-5555',
+            Short_Code__c='CHS'
+            ); 
+        insert bu;
 
         Proposal__c p = new Proposal__c(
             Account__c = a.Id,
@@ -14,36 +21,44 @@ private class DepositPolicyServiceTest {
         );
         insert p;
 
-        // Override policies in-memory (no DML on CMDT)
+        // In-memory policy override (no CMDT DML)
         DepositPolicyService.policyOverride = new List<Deposit_Policy__mdt>{
             mockPolicy('Global_20pct_Over_2000', 'Total', null, 2000, 4999.99, 20, 10, 10),
             mockPolicy('Global_30pct_Over_5000', 'Total', null, 5000, null,   30, 20,  0)
         };
 
-        // Preview
+        // Act: preview
         DepositPolicyService.dryRun = true;
         DepositPolicyService.PolicyResult pr = DepositPolicyService.previewPolicy(p.Id);
-        System.assertEquals(true, pr.found, 'policy should match');
-        System.assertEquals(30, pr.depositPercent, '30% policy should win');
-        System.assertEquals(1800, pr.depositAmount, '30% of 6000');
 
-        // Apply (creates Deposit)
+        // Assert: preview
+        System.assertEquals(true, pr.found, 'Expected a policy match; DTO=' + JSON.serialize(pr));
+        System.assertEquals('Total', pr.basis, 'Basis should be "Total" when policy requests it and total/subtotal logic picks available basis. DTO=' + JSON.serialize(pr));
+        System.assertEquals(30, pr.depositPercent, 'Expected 30% policy to match. DTO=' + JSON.serialize(pr));
+        System.assertEquals(1800, pr.depositAmount, 'Expected 30% of 6000 = 1800. DTO=' + JSON.serialize(pr));
+
+        // Act: apply (creates Deposit)
         DepositPolicyService.dryRun = false;
-        DepositPolicyService.applyPolicy(p.Id, true);
+        try {
+            DepositPolicyService.applyPolicy(p.Id, true);
+        } catch (Exception e) {
+            System.assert(false, 'applyPolicy threw: ' + e.getTypeName() + ': ' + e.getMessage() + '\nStack: ' + e.getStackTraceString());
+        }
 
+        // Assert: deposit persisted
         Deposit__c dep = [
             SELECT Amount__c, Percent__c, Status__c, Basis__c,
                    Policy_Name__c, Proposal__c, Billing_Group_Key__c, Public_Hash__c
             FROM Deposit__c WHERE Proposal__c = :p.Id LIMIT 1
         ];
-        System.assertEquals(1800, dep.Amount__c);
-        System.assertEquals(30, dep.Percent__c);
-        System.assertEquals('Draft', dep.Status__c);
-        System.assertEquals('Total', dep.Basis__c);
-        System.assertEquals('BGK-001', dep.Billing_Group_Key__c);
-        System.assertNotEquals(null, dep.Public_Hash__c);
+        System.assertEquals(1800, dep.Amount__c, 'Deposit amount mismatch');
+        System.assertEquals(30, dep.Percent__c, 'Deposit percent mismatch');
+        System.assertEquals('Draft', dep.Status__c, 'Status mismatch');
+        System.assertEquals('Total', dep.Basis__c, 'Basis mismatch');
+        System.assertEquals('BGK-001', dep.Billing_Group_Key__c, 'Group key mismatch');
+        System.assertNotEquals(null, dep.Public_Hash__c, 'Public hash should be generated');
 
-        // Clean up override
+        // Cleanup override
         DepositPolicyService.policyOverride = null;
     }
 

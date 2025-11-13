@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application_Amount__c</fullName>
+    <externalId>false</externalId>
+    <label>Application Amount</label>
+    <required>false</required>
+    <summaryFilterItems>
+        <field>Credit_Memo_Application__c.Status__c</field>
+        <operation>equals</operation>
+        <value>Applied</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Credit_Memo_Application__c.Credit_Memo__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <summarizedField>Credit_Memo_Application__c.Amount__c</summarizedField>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

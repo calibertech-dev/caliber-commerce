@@ -6,11 +6,10 @@
   <formula>
 AND(
   NOT(ISBLANK(Due_Date__c)),
-  Balance__c &lt; 0,
+  Amount_Due__c &lt; 0,
   Due_Date__c &lt; TODAY(),
   OR(
-    ISPICKVAL(Status__c,"Posted"),
-    ISPICKVAL(Status__c,"Sent"),
+    ISPICKVAL(Status__c,"Open"),
     ISPICKVAL(Status__c,"Partially Paid")
   )
 )
