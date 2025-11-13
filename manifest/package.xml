@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>ApplicationGuardService</members>
+        <members>ContractAmendmentTriggerHandler</members>
+        <members>ContractTriggerHandler</members>
+        <members>CreditMemoApplicationTriggerHandler</members>
+        <members>DepositApplicationTriggerHandler</members>
         <members>DepositPolicyService</members>
         <members>DepositPolicyServiceTest</members>
+        <members>InvoiceLineGuardService</members>
+        <members>InvoicePostingService</members>
+        <members>InvoiceServicesTest</members>
+        <members>InvoiceStatusService</members>
+        <members>InvoiceTermsService</members>
+        <members>InvoiceTriggerHandler</members>
+        <members>PaymentApplicationTriggerHandler</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>ContractAmendmentNumber_T</members>
-        <members>ContractAmendment_Fee_T</members>
-        <members>Contract_Fee_T</members>
-        <members>DepositApplicationNumber_T</members>
-        <members>PaymentApplicationNumber_T</members>
+        <members>ContractAmendmentTrigger</members>
+        <members>ContractTrigger</members>
+        <members>CreditMemoApplicationTrigger</members>
+        <members>DepositApplicationTrigger</members>
+        <members>InvoiceLineTrigger</members>
+        <members>InvoiceTrigger</members>
+        <members>PaymentApplicationTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -84,7 +98,8 @@
         <members>Credit_Memo_Line__c.Unit_Of_Measure__c</members>
         <members>Credit_Memo_Line__c.Unit_Price__c</members>
         <members>Credit_Memo__c.Account__c</members>
-        <members>Credit_Memo__c.Applications_Applied__c</members>
+        <members>Credit_Memo__c.Application_Amount__c</members>
+        <members>Credit_Memo__c.Application_Count__c</members>
         <members>Credit_Memo__c.Billing_Group_Key__c</members>
         <members>Credit_Memo__c.Business_Unit__c</members>
         <members>Credit_Memo__c.Description__c</members>
