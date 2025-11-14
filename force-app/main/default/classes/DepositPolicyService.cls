@@ -214,27 +214,7 @@ public with sharing class DepositPolicyService {
         d.Billing_Group_Key__c = (String)proposal.get(F_PROPOSAL_GROUPKEY);
         // Inherit or generate a public hash
         // d.Public_Hash__c    = (String)proposal.get(F_PROPOSAL_PUBHASH);
-        d.Public_Hash__c       = makeUrlSafeToken(22);
+        d.Public_Hash__c       = UrlTokenService.makeUrlSafeToken(22);
         return d;
     }
-
-    // ======= moved to top-level class scope (Apex disallows static in inner classes)
-    private static String makeUrlSafeToken(Integer desiredLength) {
-        // AES key size must be 128, 192, or 256 *bits* – not bytes.
-        // We'll just use 256 bits to get plenty of entropy.
-        Blob b = Crypto.generateAesKey(256);
-
-        String b64 = EncodingUtil.base64Encode(b)
-            .replace('+','-')
-            .replace('/','_')
-            .replace('=','');
-
-        // If no desired length, just return the full URL-safe string
-        if (desiredLength == null || desiredLength <= 0 || desiredLength >= b64.length()) {
-            return b64;
-        }
-
-        return b64.substring(0, desiredLength);
-    }
-
 }

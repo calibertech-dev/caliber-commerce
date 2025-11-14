@@ -7,10 +7,8 @@
         <valueSetDefinition>
             <sorted>true</sorted>
             <value><fullName>Draft</fullName><default>true</default><label>Draft</label></value>
-            <value><fullName>Partially Paid</fullName><default>false</default><label>Partially Paid</label></value>
-            <value><fullName>Paid</fullName><default>false</default><label>Paid</label></value>
-            <value><fullName>Applied</fullName><default>false</default><label>Applied</label></value>
-            <value><fullName>Partially Applied</fullName><default>false</default><label>Partially Applied</label></value>
+            <value><fullName>Open</fullName><default>false</default><label>Open</label></value>
+            <value><fullName>Received</fullName><default>false</default><label>Received</label></value>
             <value><fullName>Refunded</fullName><default>false</default><label>Refunded</label></value>
             <value><fullName>Voided</fullName><default>false</default><label>Voided</label></value>
         </valueSetDefinition>

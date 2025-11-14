@@ -39,12 +39,20 @@ public with sharing class DepositApplicationTriggerHandler {
         List<Deposit_Application__c> oldList,
         Boolean isInsert, Boolean isUpdate, Boolean isDelete, Boolean isUndelete
     ) {
+        // parent deposits → utilization update
+        Set<Id> depositIds = new Set<Id>();
+        if (isInsert || isUpdate || isUndelete)
+            for (Deposit_Application__c r : newList) if (r.Deposit__c != null) depositIds.add(r.Deposit__c);
+        if (isDelete && oldList != null)
+            for (Deposit_Application__c r : oldList) if (r.Deposit__c != null) depositIds.add(r.Deposit__c);
+        if (!depositIds.isEmpty()) DepositUtilizationService.recalc(depositIds);
+
+        // invoice headers
         Set<Id> invoiceIds = new Set<Id>();
         if (isInsert || isUpdate || isUndelete)
             for (Deposit_Application__c r : newList) if (r.Invoice__c != null) invoiceIds.add(r.Invoice__c);
         if (isDelete && oldList != null)
             for (Deposit_Application__c r : oldList) if (r.Invoice__c != null) invoiceIds.add(r.Invoice__c);
-
         if (!invoiceIds.isEmpty()) InvoiceStatusService.recalcForInvoices(invoiceIds);
     }
 }

@@ -8,7 +8,7 @@
     <valueSetDefinition>
       <sorted>true</sorted>
       <value><fullName>Draft</fullName><default>true</default><label>Draft</label></value>
-      <value><fullName>Issued</fullName><default>false</default><label>Issued</label></value>
+      <value><fullName>Open</fullName><default>false</default><label>Open</label></value>
       <value><fullName>Partially Applied</fullName><default>false</default><label>Partially Applied</label></value>
       <value><fullName>Applied</fullName><default>false</default><label>Applied</label></value>
       <value><fullName>Voided</fullName><default>false</default><label>Voided</label></value>

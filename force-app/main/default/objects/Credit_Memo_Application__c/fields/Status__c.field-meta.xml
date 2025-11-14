@@ -7,7 +7,6 @@
   <valueSet>
     <valueSetDefinition>
       <sorted>true</sorted>
-      <value><fullName>Planned</fullName><default>true</default><label>Planned</label></value>
       <value><fullName>Applied</fullName><default>false</default><label>Applied</label></value>
       <value><fullName>Voided</fullName><default>false</default><label>Voided</label></value>
     </valueSetDefinition>

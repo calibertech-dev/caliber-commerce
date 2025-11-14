@@ -1,8 +1,12 @@
 public with sharing class InvoiceTriggerHandler {
+
+    // ================= BEFORE =================
     public static void before(List<Invoice__c> newList, Map<Id, Invoice__c> oldMap) {
         InvoicePostingService.handleBefore(newList, oldMap);   // stamp Invoice_Date__c on first post
         InvoiceTermsService.applyTermsDates(newList, oldMap);  // compute Due_Date__c unless Custom
     }
+
+        // ================= AFTER =================
     public static void after(List<Invoice__c> newList, Map<Id, Invoice__c> oldMap) {
         // Re-evaluate status when Posted or already Posted (header changed)
         Set<Id> ids = new Set<Id>();

@@ -39,12 +39,22 @@ public with sharing class PaymentApplicationTriggerHandler {
         List<Payment_Application__c> oldList,
         Boolean isInsert, Boolean isUpdate, Boolean isDelete, Boolean isUndelete
     ) {
+        // collect parent Payment ids
+        Set<Id> paymentIds = new Set<Id>();
+        if (isInsert || isUpdate || isUndelete)
+            for (Payment_Application__c r : newList) if (r.Payment__c != null) paymentIds.add(r.Payment__c);
+        if (isDelete && oldList != null)
+            for (Payment_Application__c r : oldList) if (r.Payment__c != null) paymentIds.add(r.Payment__c);
+
+        // utilization (not collection) update
+        if (!paymentIds.isEmpty()) PaymentUtilizationService.recalc(paymentIds);
+
+        // invoice headers
         Set<Id> invoiceIds = new Set<Id>();
         if (isInsert || isUpdate || isUndelete)
             for (Payment_Application__c r : newList) if (r.Invoice__c != null) invoiceIds.add(r.Invoice__c);
         if (isDelete && oldList != null)
             for (Payment_Application__c r : oldList) if (r.Invoice__c != null) invoiceIds.add(r.Invoice__c);
-
         if (!invoiceIds.isEmpty()) InvoiceStatusService.recalcForInvoices(invoiceIds);
     }
 }

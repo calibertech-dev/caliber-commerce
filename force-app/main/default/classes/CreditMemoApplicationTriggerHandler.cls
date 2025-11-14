@@ -39,12 +39,20 @@ public with sharing class CreditMemoApplicationTriggerHandler {
         List<Credit_Memo_Application__c> oldList,
         Boolean isInsert, Boolean isUpdate, Boolean isDelete, Boolean isUndelete
     ) {
+        // parent credit memos → status update
+        Set<Id> cmIds = new Set<Id>();
+        if (isInsert || isUpdate || isUndelete)
+            for (Credit_Memo_Application__c r : newList) if (r.Credit_Memo__c != null) cmIds.add(r.Credit_Memo__c);
+        if (isDelete && oldList != null)
+            for (Credit_Memo_Application__c r : oldList) if (r.Credit_Memo__c != null) cmIds.add(r.Credit_Memo__c);
+        if (!cmIds.isEmpty()) CreditMemoStatusService.recalc(cmIds);
+
+        // invoice headers
         Set<Id> invoiceIds = new Set<Id>();
         if (isInsert || isUpdate || isUndelete)
             for (Credit_Memo_Application__c r : newList) if (r.Invoice__c != null) invoiceIds.add(r.Invoice__c);
         if (isDelete && oldList != null)
             for (Credit_Memo_Application__c r : oldList) if (r.Invoice__c != null) invoiceIds.add(r.Invoice__c);
-
         if (!invoiceIds.isEmpty()) InvoiceStatusService.recalcForInvoices(invoiceIds);
     }
 }
