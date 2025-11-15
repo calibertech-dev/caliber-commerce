@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Contract_Template__c</fullName>
+    <fullName>Document_Template__c</fullName>
     <externalId>false</externalId>
-    <label>Contract Template</label>
-    <referenceTo>Contract_Template__c</referenceTo>
+    <label>Document Template</label>
+    <referenceTo>Document_Template__c</referenceTo>
     <relationshipLabel>Contracts</relationshipLabel>
-    <relationshipName>Contract_Template_Contracts</relationshipName>
+    <relationshipName>Document_Template_Contracts</relationshipName>
     <required>false</required>
     <trackHistory>true</trackHistory>
     <type>Lookup</type>

@@ -51,15 +51,15 @@
         <members>Contract_Amendment__c.Public_Hash__c</members>
         <members>Contract_Amendment__c.Status__c</members>
         <members>Contract_Amendment__c.Written_Amount__c</members>
-        <members>Contract_Template__c.Business_Unit__c</members>
-        <members>Contract_Template__c.Created_From_Drive__c</members>
-        <members>Contract_Template__c.Description__c</members>
-        <members>Contract_Template__c.Drive_File_Id__c</members>
-        <members>Contract_Template__c.Drive_File_URL__c</members>
-        <members>Contract_Template__c.Generated_File_Format__c</members>
-        <members>Contract_Template__c.Industry__c</members>
-        <members>Contract_Template__c.Is_Active__c</members>
-        <members>Contract_Template__c.Template_Category__c</members>
+        <members>Document_Template__c.Business_Unit__c</members>
+        <members>Document_Template__c.Created_From_Drive__c</members>
+        <members>Document_Template__c.Description__c</members>
+        <members>Document_Template__c.Drive_File_Id__c</members>
+        <members>Document_Template__c.Drive_File_URL__c</members>
+        <members>Document_Template__c.Generated_File_Format__c</members>
+        <members>Document_Template__c.Industry__c</members>
+        <members>Document_Template__c.Is_Active__c</members>
+        <members>Document_Template__c.Template_Category__c</members>
         <members>Contract__c.Account__c</members>
         <members>Contract__c.Amended_Amount__c</members>
         <members>Contract__c.Amendment_Count__c</members>
@@ -70,7 +70,7 @@
         <members>Contract__c.Company_Signer_Title__c</members>
         <members>Contract__c.Company_Signer__c</members>
         <members>Contract__c.Contract_Fee__c</members>
-        <members>Contract__c.Contract_Template__c</members>
+        <members>Contract__c.Document_Template__c</members>
         <members>Contract__c.Contract_Title__c</members>
         <members>Contract__c.Contract_Type__c</members>
         <members>Contract__c.Counterparty_Signed_Date__c</members>
@@ -357,7 +357,7 @@
     </types>
     <types>
         <members>Contract_Amendment__c</members>
-        <members>Contract_Template__c</members>
+        <members>Document_Template__c</members>
         <members>Contract__c</members>
         <members>Credit_Memo_Application__c</members>
         <members>Credit_Memo_Line__c</members>

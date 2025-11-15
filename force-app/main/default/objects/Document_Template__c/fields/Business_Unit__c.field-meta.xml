@@ -3,8 +3,8 @@
     <fullName>Business_Unit__c</fullName>
     <label>Business Unit</label>
     <referenceTo>Business_Unit__c</referenceTo>
-    <relationshipLabel>Contract Templates</relationshipLabel>
-    <relationshipName>Business_Unit_Contract_Templates</relationshipName>
+    <relationshipLabel>Document Templates</relationshipLabel>
+    <relationshipName>Business_Unit_Document_Templates</relationshipName>
     <type>Lookup</type>
     <trackHistory>true</trackHistory>
 </CustomField>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label>Contract Template</label>
-    <pluralLabel>Contract Templates</pluralLabel>
+    <label>Document Template</label>
+    <pluralLabel>Document Templates</pluralLabel>
     <nameField>
-        <label>Contract Template Name</label>
+        <label>Document Template Name</label>
         <type>Text</type>
     </nameField>
     <deploymentStatus>Deployed</deploymentStatus>
