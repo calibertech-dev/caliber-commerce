@@ -50,11 +50,6 @@
                 <label>Partnership Agreement</label>
             </value>
             <value>
-                <fullName>Joint Venture Agreement</fullName>
-                <default>false</default>
-                <label>Joint Venture Agreement</label>
-            </value>
-            <value>
                 <fullName>Lease Agreement</fullName>
                 <default>false</default>
                 <label>Lease Agreement</label>
@@ -73,11 +68,6 @@
                 <fullName>Construction Contract</fullName>
                 <default>false</default>
                 <label>Construction Contract</label>
-            </value>
-            <value>
-                <fullName>Work Order</fullName>
-                <default>false</default>
-                <label>Work Order</label>
             </value>
             <value>
                 <fullName>Change Order</fullName>
@@ -130,9 +120,14 @@
                 <label>Proposal</label>
             </value>
             <value>
-                <fullName>Quote/Estimate</fullName>
+                <fullName>Estimate</fullName>
                 <default>false</default>
-                <label>Quote/Estimate</label>
+                <label>Estimate</label>
+            </value>
+            <value>
+                <fullName>Quote</fullName>
+                <default>false</default>
+                <label>Quote</label>
             </value>
             <value>
                 <fullName>Other</fullName>
