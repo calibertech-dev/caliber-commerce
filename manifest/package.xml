@@ -2,12 +2,18 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>ApplicationGuardService</members>
+        <members>ApplicationGuardServiceTest</members>
+        <members>ApplicationNamingTest</members>
         <members>ContractAmendmentTriggerHandler</members>
         <members>ContractTriggerHandler</members>
         <members>CreditMemoApplicationTriggerHandler</members>
+        <members>CreditMemoStatusService</members>
+        <members>CreditMemoStatusServiceTest</members>
         <members>DepositApplicationTriggerHandler</members>
         <members>DepositPolicyService</members>
         <members>DepositPolicyServiceTest</members>
+        <members>DepositUtilizationService</members>
+        <members>DepositUtilizationServiceTest</members>
         <members>InvoiceLineGuardService</members>
         <members>InvoicePostingService</members>
         <members>InvoiceServicesTest</members>
@@ -15,6 +21,8 @@
         <members>InvoiceTermsService</members>
         <members>InvoiceTriggerHandler</members>
         <members>PaymentApplicationTriggerHandler</members>
+        <members>PaymentUtilizationService</members>
+        <members>PaymentUtilizationServiceTest</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -42,6 +50,7 @@
         <members>Contract_Amendment__c.Counterparty_Signed_Date__c</members>
         <members>Contract_Amendment__c.Counterparty_Signer_Title__c</members>
         <members>Contract_Amendment__c.Counterparty_Signer__c</members>
+        <members>Contract_Amendment__c.Document_Template__c</members>
         <members>Contract_Amendment__c.Effective_Date__c</members>
         <members>Contract_Amendment__c.End_Date__c</members>
         <members>Contract_Amendment__c.File_Name__c</members>
@@ -51,15 +60,6 @@
         <members>Contract_Amendment__c.Public_Hash__c</members>
         <members>Contract_Amendment__c.Status__c</members>
         <members>Contract_Amendment__c.Written_Amount__c</members>
-        <members>Document_Template__c.Business_Unit__c</members>
-        <members>Document_Template__c.Created_From_Drive__c</members>
-        <members>Document_Template__c.Description__c</members>
-        <members>Document_Template__c.Drive_File_Id__c</members>
-        <members>Document_Template__c.Drive_File_URL__c</members>
-        <members>Document_Template__c.Generated_File_Format__c</members>
-        <members>Document_Template__c.Industry__c</members>
-        <members>Document_Template__c.Is_Active__c</members>
-        <members>Document_Template__c.Template_Category__c</members>
         <members>Contract__c.Account__c</members>
         <members>Contract__c.Amended_Amount__c</members>
         <members>Contract__c.Amendment_Count__c</members>
@@ -70,12 +70,12 @@
         <members>Contract__c.Company_Signer_Title__c</members>
         <members>Contract__c.Company_Signer__c</members>
         <members>Contract__c.Contract_Fee__c</members>
-        <members>Contract__c.Document_Template__c</members>
         <members>Contract__c.Contract_Title__c</members>
         <members>Contract__c.Contract_Type__c</members>
         <members>Contract__c.Counterparty_Signed_Date__c</members>
         <members>Contract__c.Counterparty_Signer_Title__c</members>
         <members>Contract__c.Counterparty_Signer__c</members>
+        <members>Contract__c.Document_Template__c</members>
         <members>Contract__c.Effective_Date__c</members>
         <members>Contract__c.End_Date__c</members>
         <members>Contract__c.File_Name__c</members>
@@ -131,6 +131,7 @@
         <members>Deposit__c.Basis__c</members>
         <members>Deposit__c.Billing_Group_Key__c</members>
         <members>Deposit__c.Business_Unit__c</members>
+        <members>Deposit__c.Deposit_Utilization__c</members>
         <members>Deposit__c.Description__c</members>
         <members>Deposit__c.Percent__c</members>
         <members>Deposit__c.Policy_Name__c</members>
@@ -138,6 +139,15 @@
         <members>Deposit__c.Public_Hash__c</members>
         <members>Deposit__c.Remaining_Amount__c</members>
         <members>Deposit__c.Status__c</members>
+        <members>Document_Template__c.Business_Unit__c</members>
+        <members>Document_Template__c.Created_From_Drive__c</members>
+        <members>Document_Template__c.Description__c</members>
+        <members>Document_Template__c.Drive_File_Id__c</members>
+        <members>Document_Template__c.Drive_File_URL__c</members>
+        <members>Document_Template__c.Generated_File_Format__c</members>
+        <members>Document_Template__c.Industry__c</members>
+        <members>Document_Template__c.Is_Active__c</members>
+        <members>Document_Template__c.Template_Category__c</members>
         <members>Invoice_Line__c.Cost_Base__c</members>
         <members>Invoice_Line__c.Cost__c</members>
         <members>Invoice_Line__c.Discount_Amount__c</members>
@@ -211,12 +221,14 @@
         <members>Payment__c.Amount__c</members>
         <members>Payment__c.Application_Count__c</members>
         <members>Payment__c.Applied_Amount__c</members>
+        <members>Payment__c.Billing_Group_Key__c</members>
         <members>Payment__c.Business_Unit__c</members>
         <members>Payment__c.Fee_Amount__c</members>
         <members>Payment__c.Net_Amount__c</members>
         <members>Payment__c.Payment_Channel__c</members>
         <members>Payment__c.Payment_Method_Other__c</members>
         <members>Payment__c.Payment_Method__c</members>
+        <members>Payment__c.Payment_Utilization__c</members>
         <members>Payment__c.Remaining_Amount__c</members>
         <members>Payment__c.Status__c</members>
         <members>Proposal_Line__c.Cost_Base__c</members>
@@ -258,6 +270,7 @@
         <members>Proposal__c.Discount_Amount__c</members>
         <members>Proposal__c.Discount_Type__c</members>
         <members>Proposal__c.Discount_Value__c</members>
+        <members>Proposal__c.Document_Template__c</members>
         <members>Proposal__c.Expiration_Date__c</members>
         <members>Proposal__c.Fulfillment_Route__c</members>
         <members>Proposal__c.Gross_Margin__c</members>
@@ -357,7 +370,6 @@
     </types>
     <types>
         <members>Contract_Amendment__c</members>
-        <members>Document_Template__c</members>
         <members>Contract__c</members>
         <members>Credit_Memo_Application__c</members>
         <members>Credit_Memo_Line__c</members>
@@ -365,6 +377,7 @@
         <members>Deposit_Application__c</members>
         <members>Deposit_Policy__mdt</members>
         <members>Deposit__c</members>
+        <members>Document_Template__c</members>
         <members>Invoice_Line__c</members>
         <members>Invoice__c</members>
         <members>Payment_Application__c</members>
@@ -374,6 +387,15 @@
         <members>Subscription_Line__c</members>
         <members>Subscription__c</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Invoice__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Commerce_Icons</members>
+        <members>Commerce_Icons/Invoice_Icon</members>
+        <name>Document</name>
     </types>
     <types>
         <members>Project_Fulfillment_Route</members>
