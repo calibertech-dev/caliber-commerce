@@ -6,7 +6,12 @@
       "path": "force-app",
       "default": true,
       "package": "caliber-commerce",
-      "versionDescription": "caliber-commerce package"
+      "versionDescription": "caliber-commerce package",
+      "dependencies": [
+        {
+          "package": "caliber-core"
+        }
+      ]
     }
   ],
   "name": "caliber-commerce",

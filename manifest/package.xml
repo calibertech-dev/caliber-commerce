@@ -389,7 +389,22 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>Contract_Amendment__c</members>
+        <members>Contract__c</members>
+        <members>Credit_Memo_Application__c</members>
+        <members>Credit_Memo_Line__c</members>
+        <members>Credit_Memo__c</members>
+        <members>Deposit_Application__c</members>
+        <members>Deposit__c</members>
+        <members>Document_Template__c</members>
+        <members>Invoice_Line__c</members>
         <members>Invoice__c</members>
+        <members>Payment_Application__c</members>
+        <members>Payment__c</members>
+        <members>Proposal_Line__c</members>
+        <members>Proposal__c</members>
+        <members>Subscription_Line__c</members>
+        <members>Subscription__c</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -405,6 +420,10 @@
     <types>
         <members>Deposit_Policy__mdt-Caliber Core Feature Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>Commerce_Admin</members>
+        <name>PermissionSet</name>
     </types>
     <version>64.0</version>
 </Package>
