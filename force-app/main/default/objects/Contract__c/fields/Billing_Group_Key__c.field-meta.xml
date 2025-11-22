@@ -6,6 +6,9 @@
     <label>Billing Group Key</label>
     <length>36</length>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>
