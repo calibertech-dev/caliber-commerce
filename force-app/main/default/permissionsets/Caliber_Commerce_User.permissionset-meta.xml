@@ -1053,6 +1053,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Payment__c.Payment_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>    
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Payment__c.Payment_Method_Other__c</field>
         <readable>true</readable>
     </fieldPermissions>
