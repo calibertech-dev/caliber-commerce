@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-  <fullName>Deposit__c</fullName>
-  <label>Deposit</label>
-  <type>MasterDetail</type>
-  <referenceTo>Deposit__c</referenceTo>
-  <relationshipName>Deposit_Deposit_Applications</relationshipName>
-  <relationshipLabel>Deposit Applications</relationshipLabel>
-  <reparentableMasterDetail>false</reparentableMasterDetail>
-  <trackHistory>true</trackHistory>
+    <fullName>Deposit__c</fullName>
+    <label>Deposit</label>
+    <referenceTo>Deposit__c</referenceTo>
+    <relationshipLabel>Deposit Applications</relationshipLabel>
+    <relationshipName>Deposit_Deposit_Applications</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
 </CustomField>
