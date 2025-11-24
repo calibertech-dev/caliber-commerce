@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Payment_Method_Other__c</fullName>
-    <description>When Payment Method = Other, capture provider/method label (e.g., PayPal, Apple Pay).</description>
+    <fullName>Public_Hash__c</fullName>
+    <caseSensitive>true</caseSensitive>
+    <description>Opaque token for portal/guest access.</description>
     <externalId>false</externalId>
-    <label>Payment Method (Other)</label>
-    <length>80</length>
+    <label>Public Hash</label>
+    <length>64</length>
     <required>false</required>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>
-    <unique>false</unique>
+    <unique>true</unique>
 </CustomField>

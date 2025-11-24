@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-  <fullName>Net_Amount__c</fullName>
-  <label>Net Amount</label>
-  <type>Currency</type>
-  <precision>16</precision>
-  <scale>2</scale>
-  <trackHistory>true</trackHistory>
-  <description>Amount minus processor fees.</description>
+    <fullName>Net_Amount__c</fullName>
+    <description>Amount minus processor fees.</description>
+    <label>Net Amount</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
 </CustomField>
