@@ -3,7 +3,10 @@
     <fullName>Amount__c</fullName>
     <label>Amount</label>
     <precision>14</precision>
+    <required>false</required>
     <scale>2</scale>
-    <type>Currency</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
 </CustomField>

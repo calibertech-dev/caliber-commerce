@@ -3,7 +3,10 @@
     <fullName>Percent__c</fullName>
     <label>Percent</label>
     <precision>5</precision>
+    <required>false</required>
     <scale>2</scale>
-    <type>Percent</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
 </CustomField>
