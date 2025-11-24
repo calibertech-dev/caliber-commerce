@@ -3,7 +3,10 @@
     <fullName>Subtotal__c</fullName>
     <label>Subtotal</label>
     <precision>16</precision>
+    <required>false</required>
     <scale>2</scale>
-    <type>Currency</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
 </CustomField>

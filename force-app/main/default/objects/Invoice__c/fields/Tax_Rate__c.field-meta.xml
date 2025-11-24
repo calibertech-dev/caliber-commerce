@@ -3,7 +3,10 @@
     <fullName>Tax_Rate__c</fullName>
     <label>Tax Rate (%)</label>
     <precision>3</precision>
+    <required>false</required>
     <scale>2</scale>
-    <type>Percent</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
 </CustomField>

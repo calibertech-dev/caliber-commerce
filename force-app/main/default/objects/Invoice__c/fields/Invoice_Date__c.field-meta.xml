@@ -3,6 +3,8 @@
     <fullName>Invoice_Date__c</fullName>
     <label>Invoice Date</label>
     <required>false</required>
-    <type>Date</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
 </CustomField>

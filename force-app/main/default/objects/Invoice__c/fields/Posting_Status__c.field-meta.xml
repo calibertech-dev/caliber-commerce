@@ -2,14 +2,29 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Posting_Status__c</fullName>
     <label>Posting Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
             <sorted>true</sorted>
-            <value><fullName>Unposted</fullName><default>true</default><label>Unposted</label></value>
-            <value><fullName>Posted</fullName><default>false</default><label>Posted</label></value>
-            <value><fullName>Error</fullName><default>false</default><label>Error</label></value>
+            <value>
+                <fullName>Error</fullName>
+                <default>false</default>
+                <label>Error</label>
+            </value>
+            <value>
+                <fullName>Posted</fullName>
+                <default>false</default>
+                <label>Posted</label>
+            </value>
+            <value>
+                <fullName>Unposted</fullName>
+                <default>true</default>
+                <label>Unposted</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
-    <trackHistory>true</trackHistory>
 </CustomField>

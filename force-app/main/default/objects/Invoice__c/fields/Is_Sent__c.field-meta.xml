@@ -3,6 +3,8 @@
     <fullName>Is_Sent__c</fullName>
     <defaultValue>false</defaultValue>
     <label>Is Sent</label>
-    <type>Checkbox</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
 </CustomField>

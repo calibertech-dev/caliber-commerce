@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-  <fullName>Is_Overdue__c</fullName>
-  <label>Is Overdue</label>
-  <type>Checkbox</type>
-  <formula>
-AND(
+    <fullName>Is_Overdue__c</fullName>
+    <formula>AND(
   NOT(ISBLANK(Due_Date__c)),
   Amount_Due__c &lt; 0,
   Due_Date__c &lt; TODAY(),
   OR(
-    ISPICKVAL(Status__c,"Open"),
-    ISPICKVAL(Status__c,"Partially Paid")
+    ISPICKVAL(Status__c,&quot;Open&quot;),
+    ISPICKVAL(Status__c,&quot;Partially Paid&quot;)
   )
-)
-  </formula>
+)</formula>
+    <label>Is Overdue</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
 </CustomField>
