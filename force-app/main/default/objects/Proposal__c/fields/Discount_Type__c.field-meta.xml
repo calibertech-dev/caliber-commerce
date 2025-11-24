@@ -3,6 +3,7 @@
     <fullName>Discount_Type__c</fullName>
     <label>Discount Type</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -14,7 +15,7 @@
                 <fullName>None</fullName>
                 <default>true</default>
                 <label>None</label>
-            </value>            
+            </value>
             <value>
                 <fullName>Fixed</fullName>
                 <default>false</default>

@@ -3,6 +3,8 @@
     <fullName>Proposal_Date__c</fullName>
     <label>Proposal Date</label>
     <required>false</required>
-    <type>Date</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
 </CustomField>

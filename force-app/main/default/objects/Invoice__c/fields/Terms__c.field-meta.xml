@@ -9,16 +9,16 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>true</sorted>
-            <value>
-                <fullName>Custom</fullName>
-                <default>false</default>
-                <label>Custom</label>
-            </value>
+            <sorted>false</sorted>
             <value>
                 <fullName>Due on Receipt</fullName>
                 <default>true</default>
                 <label>Due on Receipt</label>
+            </value>            
+            <value>
+                <fullName>Net 7</fullName>
+                <default>false</default>
+                <label>Net 7</label>
             </value>
             <value>
                 <fullName>Net 15</fullName>
@@ -41,10 +41,10 @@
                 <label>Net 60</label>
             </value>
             <value>
-                <fullName>Net 7</fullName>
+                <fullName>Custom</fullName>
                 <default>false</default>
-                <label>Net 7</label>
-            </value>
+                <label>Custom</label>
+            </value>            
         </valueSetDefinition>
     </valueSet>
 </CustomField>

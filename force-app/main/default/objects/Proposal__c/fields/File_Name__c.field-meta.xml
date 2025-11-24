@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Public_Hash__c</fullName>
-    <caseSensitive>true</caseSensitive>
-    <description>Opaque token for portal/guest access.</description>
+    <fullName>File_Name__c</fullName>
+    <description>File name for generated file.</description>
     <externalId>false</externalId>
-    <label>Public Hash</label>
-    <length>64</length>
+    <formula>Name + &quot;-&quot; + Proposal_Title__c</formula>
+    <label>File Name</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>
-    <unique>true</unique>
+    <unique>false</unique>
 </CustomField>
