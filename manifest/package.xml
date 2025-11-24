@@ -98,7 +98,7 @@
         <members>Credit_Memo_Line__c.Unit_Of_Measure__c</members>
         <members>Credit_Memo_Line__c.Unit_Price__c</members>
         <members>Credit_Memo__c.Account__c</members>
-        <members>Credit_Memo__c.Application_Amount__c</members>
+        <members>Credit_Memo__c.Applied_Amount__c</members>
         <members>Credit_Memo__c.Application_Count__c</members>
         <members>Credit_Memo__c.Billing_Group_Key__c</members>
         <members>Credit_Memo__c.Business_Unit__c</members>

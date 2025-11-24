@@ -467,7 +467,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Credit_Memo__c.Application_Amount__c</field>
+        <field>Credit_Memo__c.Applied_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1802,7 +1802,7 @@
     <tabSettings>
         <tab>Contract__c</tab>
         <visibility>Visible</visibility>
-    </tabSettings>
+    </tabSettings>       
     <tabSettings>
         <tab>Contract_Amendment__c</tab>
         <visibility>Visible</visibility>
@@ -1813,11 +1813,11 @@
     </tabSettings>
     <tabSettings>
         <tab>Credit_Memo_Application__c</tab>
-        <visibility>Visible</visibility>
+        <visibility>Available</visibility>     
     </tabSettings>
     <tabSettings>
         <tab>Credit_Memo_Line__c</tab>
-        <visibility>Visible</visibility>
+        <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
         <tab>Deposit__c</tab>
@@ -1825,31 +1825,7 @@
     </tabSettings>
     <tabSettings>
         <tab>Deposit_Application__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Payment__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Payment_Application__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Proposal__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Proposal_Line__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Subscription__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Subscription_Line__c</tab>
-        <visibility>Visible</visibility>
+        <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
         <tab>Invoice__c</tab>
@@ -1857,7 +1833,31 @@
     </tabSettings>
     <tabSettings>
         <tab>Invoice_Line__c</tab>
+        <visibility>Available</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Payment__c</tab>
         <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Payment_Application__c</tab>
+        <visibility>Available</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Proposal__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Proposal_Line__c</tab>
+        <visibility>Available</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Subscription__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Subscription_Line__c</tab>
+        <visibility>Available</visibility>
     </tabSettings>
 
 </PermissionSet>
