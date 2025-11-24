@@ -3,8 +3,9 @@
     <fullName>List_Price__c</fullName>
     <label>List Price</label>
     <precision>16</precision>
-    <scale>2</scale>
     <required>false</required>
+    <scale>2</scale>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Currency</type>
 </CustomField>

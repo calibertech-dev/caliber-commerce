@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Source_Proposal_Line__c</fullName>
-    <externalId>false</externalId>
+    <deleteConstraint>SetNull</deleteConstraint>
     <label>Source Proposal Line</label>
     <referenceTo>Proposal_Line__c</referenceTo>
     <relationshipLabel>Proposal Lines (Change Order Proposal Lines)</relationshipLabel>
     <relationshipName>Proposal_Change_Proposal_Lines</relationshipName>
     <required>false</required>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>
