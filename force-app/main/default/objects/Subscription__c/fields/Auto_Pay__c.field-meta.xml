@@ -3,6 +3,8 @@
     <fullName>Auto_Pay__c</fullName>
     <defaultValue>false</defaultValue>
     <label>Auto-Pay</label>
-    <type>Checkbox</type>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
 </CustomField>

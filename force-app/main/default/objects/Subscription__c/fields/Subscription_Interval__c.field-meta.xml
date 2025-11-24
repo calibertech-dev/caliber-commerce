@@ -2,9 +2,13 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Subscription_Interval__c</fullName>
     <label>Subscription Interval</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <restricted>true</restricted>
         <valueSetName>Subscription_Interval</valueSetName>
     </valueSet>
-    <trackHistory>true</trackHistory>
 </CustomField>

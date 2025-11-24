@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscription</fullName>
+    <fields>Name</fields>
+    <fields>Subscription_Interval__c</fields>
+    <fields>Billing_Day__c</fields>
+    <fields>Start_Date__c</fields>
+    <fields>Next_Billing_Date__c</fields>
+    <fields>Last_Billed_Date__c</fields>
+    <fields>Total_Amount__c</fields>
+    <fields>Status__c</fields>
+    <label>Subscription</label>
+</CompactLayout>

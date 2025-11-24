@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Service_Address__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
     <label>Service Address</label>
     <referenceTo>Location</referenceTo>
     <relationshipLabel>Service Address Subscriptions</relationshipLabel>
     <relationshipName>Service_Address_Subscriptions</relationshipName>
-    <type>Lookup</type>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
 </CustomField>
