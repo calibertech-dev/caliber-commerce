@@ -1,17 +1,17 @@
-trigger InvoiceTrigger on Invoice__c (
+trigger PaymentTrigger on Payment__c (
     before insert, before update,
     after insert, after update, after delete, after undelete
 ) {
     if (Trigger.isBefore) {
         if (Trigger.isInsert) {
-            InvoiceTriggerHandler.beforeInsert(Trigger.new);
+            PaymentTriggerHandler.beforeInsert(Trigger.new);
         }
         if (Trigger.isUpdate) {
-            InvoiceTriggerHandler.beforeUpdate(Trigger.new, Trigger.oldMap);
+            PaymentTriggerHandler.beforeUpdate(Trigger.new, Trigger.oldMap);
         }
     }
 
     if (Trigger.isAfter) {
-        InvoiceTriggerHandler.afterAll(Trigger.new, Trigger.oldMap);
+        PaymentTriggerHandler.afterAll(Trigger.new, Trigger.oldMap);
     }
 }

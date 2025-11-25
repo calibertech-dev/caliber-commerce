@@ -1332,11 +1332,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Proposal__c.Primary_Contact__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Proposal__c.Proposal_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>

@@ -1,17 +1,17 @@
-trigger InvoiceTrigger on Invoice__c (
+trigger DepositTrigger on Deposit__c (
     before insert, before update,
     after insert, after update, after delete, after undelete
 ) {
     if (Trigger.isBefore) {
         if (Trigger.isInsert) {
-            InvoiceTriggerHandler.beforeInsert(Trigger.new);
+            DepositTriggerHandler.beforeInsert(Trigger.new);
         }
         if (Trigger.isUpdate) {
-            InvoiceTriggerHandler.beforeUpdate(Trigger.new, Trigger.oldMap);
+            DepositTriggerHandler.beforeUpdate(Trigger.new, Trigger.oldMap);
         }
     }
 
     if (Trigger.isAfter) {
-        InvoiceTriggerHandler.afterAll(Trigger.new, Trigger.oldMap);
+        DepositTriggerHandler.afterAll(Trigger.new, Trigger.oldMap);
     }
 }

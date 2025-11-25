@@ -1,12 +1,24 @@
 public with sharing class ContractAmendmentTriggerHandler {
 
     public static void beforeInsert(List<Contract_Amendment__c> newList) {
+        if (newList == null || newList.isEmpty()) return;
+
+        // 1) Service Relationship assignment
+        ServiceRelationshipAssignmentService.assign(newList);
+
+        // 2) Fee + numbering logic
         applyFeeLogic(newList, null);
         assignNumbers(newList);
     }
 
     public static void beforeUpdate(List<Contract_Amendment__c> newList,
                                     Map<Id, Contract_Amendment__c> oldMap) {
+        if (newList == null || newList.isEmpty()) return;
+
+        // 1) Service Relationship assignment
+        ServiceRelationshipAssignmentService.assign(newList);
+
+        // 2) Fee logic
         applyFeeLogic(newList, oldMap);
     }
 
@@ -38,7 +50,6 @@ public with sharing class ContractAmendmentTriggerHandler {
             return;
         }
 
-        // Existing counts per Contract
         Map<Id, Integer> counts = new Map<Id, Integer>();
         for (AggregateResult ar : [
             SELECT Contract__c c, COUNT(Id) cnt
@@ -49,14 +60,12 @@ public with sharing class ContractAmendmentTriggerHandler {
             counts.put((Id) ar.get('c'), (Integer) ar.get('cnt'));
         }
 
-        // Parent Contracts
         Map<Id, Contract__c> cons = new Map<Id, Contract__c>([
             SELECT Id, Name, Contract_Title__c, Billing_Group_Key__c
             FROM Contract__c
             WHERE Id IN :contractIds
         ]);
 
-        // Assign names and billing group
         for (Contract_Amendment__c ca : newList) {
             if (ca.Contract__c == null) continue;
 
@@ -66,7 +75,6 @@ public with sharing class ContractAmendmentTriggerHandler {
             String baseName = cons.get(ca.Contract__c).Name;
             ca.Name = baseName + '-' + String.valueOf(next);
 
-            // Keep Billing Group aligned if blank
             if (ca.Billing_Group_Key__c == null) {
                 ca.Billing_Group_Key__c = cons.get(ca.Contract__c).Billing_Group_Key__c;
             }

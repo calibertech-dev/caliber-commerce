@@ -1,17 +1,17 @@
-trigger InvoiceTrigger on Invoice__c (
+trigger ProposalTrigger on Proposal__c (
     before insert, before update,
     after insert, after update, after delete, after undelete
 ) {
     if (Trigger.isBefore) {
         if (Trigger.isInsert) {
-            InvoiceTriggerHandler.beforeInsert(Trigger.new);
+            ProposalTriggerHandler.beforeInsert(Trigger.new);
         }
         if (Trigger.isUpdate) {
-            InvoiceTriggerHandler.beforeUpdate(Trigger.new, Trigger.oldMap);
+            ProposalTriggerHandler.beforeUpdate(Trigger.new, Trigger.oldMap);
         }
     }
 
     if (Trigger.isAfter) {
-        InvoiceTriggerHandler.afterAll(Trigger.new, Trigger.oldMap);
+        ProposalTriggerHandler.afterAll(Trigger.new, Trigger.oldMap);
     }
 }
