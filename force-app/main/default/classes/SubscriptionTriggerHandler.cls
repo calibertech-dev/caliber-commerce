@@ -22,8 +22,20 @@ public with sharing class SubscriptionTriggerHandler {
         List<Subscription__c> newList,
         Map<Id, Subscription__c> oldMap
     ) {
-        // Placeholder for:
-        // - BU firewall
-        // - Subscription-driven invoice creation, if you ever fire that off via trigger (I’d lean to async, but that’s another topic)
+        // --------------------------------------------
+        // 1) BU Firewall re-evaluation
+        // --------------------------------------------
+        List<SObject> sobjs = new List<SObject>();
+
+        if ((Trigger.isInsert || Trigger.isUpdate || Trigger.isUndelete) && newList != null) {
+            sobjs.addAll(newList);
+        }
+        if ((Trigger.isUpdate || Trigger.isDelete) && oldMap != null) {
+            sobjs.addAll(oldMap.values());
+        }
+
+        if (!sobjs.isEmpty()) {
+            BusinessUnitObjectSharingService.recalcForRecords(sobjs);
+        }
     }
 }

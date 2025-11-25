@@ -22,8 +22,20 @@ public with sharing class DepositTriggerHandler {
         List<Deposit__c> newList,
         Map<Id, Deposit__c> oldMap
     ) {
-        // Placeholder for:
-        // - BU firewall
-        // - Deposit rollups (if/when we want them to affect SR balances)
+        // --------------------------------------------
+        // 1) BU Firewall re-evaluation
+        // --------------------------------------------
+        List<SObject> sobjs = new List<SObject>();
+
+        if ((Trigger.isInsert || Trigger.isUpdate || Trigger.isUndelete) && newList != null) {
+            sobjs.addAll(newList);
+        }
+        if ((Trigger.isUpdate || Trigger.isDelete) && oldMap != null) {
+            sobjs.addAll(oldMap.values());
+        }
+
+        if (!sobjs.isEmpty()) {
+            BusinessUnitObjectSharingService.recalcForRecords(sobjs);
+        }
     }
 }

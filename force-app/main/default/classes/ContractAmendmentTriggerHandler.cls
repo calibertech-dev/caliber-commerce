@@ -1,5 +1,8 @@
 public with sharing class ContractAmendmentTriggerHandler {
 
+    // ====================================================
+    // BEFORE INSERT
+    // ====================================================
     public static void beforeInsert(List<Contract_Amendment__c> newList) {
         if (newList == null || newList.isEmpty()) return;
 
@@ -11,8 +14,13 @@ public with sharing class ContractAmendmentTriggerHandler {
         assignNumbers(newList);
     }
 
-    public static void beforeUpdate(List<Contract_Amendment__c> newList,
-                                    Map<Id, Contract_Amendment__c> oldMap) {
+    // ====================================================
+    // BEFORE UPDATE
+    // ====================================================
+    public static void beforeUpdate(
+        List<Contract_Amendment__c> newList,
+        Map<Id, Contract_Amendment__c> oldMap
+    ) {
         if (newList == null || newList.isEmpty()) return;
 
         // 1) Service Relationship assignment
@@ -22,15 +30,39 @@ public with sharing class ContractAmendmentTriggerHandler {
         applyFeeLogic(newList, oldMap);
     }
 
-    // ---------- Fee Logic ----------
-    private static void applyFeeLogic(List<Contract_Amendment__c> newList,
-                                      Map<Id, Contract_Amendment__c> oldMap) {
-        for (Contract_Amendment__c a : newList) {
-            Contract_Amendment__c oldA = (oldMap == null) ? null : oldMap.get(a.Id);
+    // ====================================================
+    // AFTER INSERT/UPDATE/DELETE/UNDELETE
+    // ====================================================
+    public static void afterAll(
+        List<Contract_Amendment__c> newList,
+        Map<Id, Contract_Amendment__c> oldMap
+    ) {
+        // IMPORTANT: NO BU FIREWALL HERE
+        // Contract Amendment is MASTER-DETAIL to Contract,
+        // so visibility is *fully inherited* from Contract.
+        //
+        // Running firewall rules on an M-D child causes:
+        // - duplicate sharing
+        // - inconsistent access
+        // - broken inherited sharing
 
-            Boolean proposalChanged = (oldA == null) ||
-                                      (a.Proposal_Amount__c != oldA.Proposal_Amount__c);
-            Boolean allowUpdate    = !a.Override_Fee__c;
+        // If future logic is needed (e.g., ripple effects), add here.
+    }
+
+
+    // ---------- Fee Logic ----------
+    private static void applyFeeLogic(
+        List<Contract_Amendment__c> newList,
+        Map<Id, Contract_Amendment__c> oldMap
+    ) {
+        for (Contract_Amendment__c a : newList) {
+            Contract_Amendment__c oldA = (oldMap == null ? null : oldMap.get(a.Id));
+
+            Boolean proposalChanged =
+                (oldA == null) ||
+                (a.Proposal_Amount__c != oldA.Proposal_Amount__c);
+
+            Boolean allowUpdate = !a.Override_Fee__c;
 
             if (allowUpdate && proposalChanged) {
                 a.Contract_Fee__c = a.Proposal_Amount__c;
@@ -41,14 +73,14 @@ public with sharing class ContractAmendmentTriggerHandler {
     // ---------- Numbering Logic ----------
     private static void assignNumbers(List<Contract_Amendment__c> newList) {
         Set<Id> contractIds = new Set<Id>();
+
         for (Contract_Amendment__c ca : newList) {
             if (ca.Contract__c != null) {
                 contractIds.add(ca.Contract__c);
             }
         }
-        if (contractIds.isEmpty()) {
-            return;
-        }
+
+        if (contractIds.isEmpty()) return;
 
         Map<Id, Integer> counts = new Map<Id, Integer>();
         for (AggregateResult ar : [
@@ -72,8 +104,7 @@ public with sharing class ContractAmendmentTriggerHandler {
             Integer next = (counts.get(ca.Contract__c) == null ? 0 : counts.get(ca.Contract__c)) + 1;
             counts.put(ca.Contract__c, next);
 
-            String baseName = cons.get(ca.Contract__c).Name;
-            ca.Name = baseName + '-' + String.valueOf(next);
+            ca.Name = cons.get(ca.Contract__c).Name + '-' + next;
 
             if (ca.Billing_Group_Key__c == null) {
                 ca.Billing_Group_Key__c = cons.get(ca.Contract__c).Billing_Group_Key__c;

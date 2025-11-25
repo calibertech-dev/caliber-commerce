@@ -30,9 +30,11 @@ Caliber Commerce serves as the universal transaction engine across all Caliber P
 ## Package Dependencies
 
 Required:
+
 - **Caliber Core** – shared utilities, error handling, and metadata framework.
 
 Optional extensions:
+
 - **Caliber Project Management** – enables project billing, progress invoices, and phase-based fulfillment.  
 - **Caliber Restoration** – integrates restoration workflows with the Commerce data model.  
 - **Caliber MagicPlan Integration** – creates Proposals directly from field capture data.  
@@ -65,6 +67,7 @@ Optional extensions:
 Caliber Commerce introduces a normalized, auditable financial data model that supports quoting, contracting, invoicing, and payments.
 
 ### Legal & Contract Objects
+
 | Object | Description |
 |---------|-------------|
 | **Contract__c** | Primary agreement record with category and business unit tracking. |
@@ -74,6 +77,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 ---
 
 ### Proposal & Quoting Objects
+
 | Object | Description |
 |---------|-------------|
 | **Proposal__c** | Unified document for **Estimates**, **Quotes**, and **Change Orders**. Determines fulfillment route and billing model. |
@@ -83,6 +87,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 | **Project_Billing_Line__c** | Created when a Proposal’s fulfillment route = Project. Tied to Project Phases for progress billing. |
 
 #### Key Fields on Proposal
+
 - `Proposal_Type__c` – *Estimate, Quote, Change*  
 - `Fulfillment_Route__c` – *Project, Work Order, Order, Service Contract*  
 - `Billing_Model__c` – *Standard, Progress, Recurring, Usage-Based*  
@@ -91,6 +96,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 - `Amendment__c` – link to Contract Amendment when applicable  
 
 #### Key Fields on Proposal Line
+
 - `Fulfillment_Target__c` – *Project Phase, Work Order, Order, Service Contract*  
 - `Source_Proposal_Line__c` – links to the original line being changed  
 - `Discount_Type__c`, `Discount_Value__c`, `Discount_Amount__c` – standard discount structure  
@@ -99,6 +105,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 ---
 
 ### Invoicing & Billing
+
 | Object | Description |
 |---------|-------------|
 | **Invoice__c** | Core billing record representing earned revenue; supports taxes, deposits, discounts, and retainage. |
@@ -106,6 +113,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 | **Project_Billing_Line__c** | Supports project-based billing; invoices generated automatically when phases are completed. |
 
 #### Invoice Highlights
+
 - `Invoice_Type__c` – *Standard, Progress, Final, Retainage*  
 - `Status__c` – *Draft, Posted, Paid, Voided*  
 - `Balance__c` – uses negative-accounting convention for liability accuracy.  
@@ -114,6 +122,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 ---
 
 ### Payments, Deposits & Refunds
+
 | Object | Description |
 |---------|-------------|
 | **Deposit__c** | Prepayment record linked to a Proposal or Contract; applied to invoices when work begins. |
@@ -125,6 +134,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 ---
 
 ### Credits & Adjustments
+
 | Object | Description |
 |---------|-------------|
 | **Credit_Memo__c** | Issued credit used to offset invoice balances. |
@@ -134,6 +144,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 ---
 
 ### Financial Ledger
+
 | Object | Description |
 |---------|-------------|
 | **Transaction_Register__c** | Master ledger that records every posting event (invoice, payment, refund, credit). Forms the backbone of audit and reconciliation. |
@@ -141,6 +152,7 @@ Caliber Commerce introduces a normalized, auditable financial data model that su
 ---
 
 ### Recurring Billing
+
 | Object | Description |
 |---------|-------------|
 | **Subscription__c** | Automates recurring invoices for contracts or service plans. Integrates with deposit logic and Transaction Register for recurring entries. |
@@ -196,4 +208,4 @@ Change Orders are implemented using **Proposal (Type = Change)** records linked 
 This project is licensed under the terms described in the [LICENSE.md](./LICENSE.md) file.
 
 © 2025 Caliber Technologies LLC  
-For commercial or implementation inquiries, contact **dev@calibertech.net**
+For commercial or implementation inquiries, contact **<dev@calibertech.net>**

@@ -22,8 +22,20 @@ public with sharing class ProposalTriggerHandler {
         List<Proposal__c> newList,
         Map<Id, Proposal__c> oldMap
     ) {
-        // Placeholder for:
-        // - BU firewall
-        // - Anything that needs to recalc after insert/update/delete
+        // --------------------------------------------
+        // 1) BU Firewall re-evaluation
+        // --------------------------------------------
+        List<SObject> sobjs = new List<SObject>();
+
+        if ((Trigger.isInsert || Trigger.isUpdate || Trigger.isUndelete) && newList != null) {
+            sobjs.addAll(newList);
+        }
+        if ((Trigger.isUpdate || Trigger.isDelete) && oldMap != null) {
+            sobjs.addAll(oldMap.values());
+        }
+
+        if (!sobjs.isEmpty()) {
+            BusinessUnitObjectSharingService.recalcForRecords(sobjs);
+        }
     }
 }
