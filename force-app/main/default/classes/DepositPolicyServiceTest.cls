@@ -4,11 +4,15 @@ private class DepositPolicyServiceTest {
     static void preview_and_apply_policy_works() {
         // Arrange
         Account a = new Account(Name='Acme'); insert a;
+        Legal_Entity__c le = new Legal_Entity__c(Name = 'Test Legal Entity'); 
+        insert le;
+
         Business_Unit__c bu = new Business_Unit__c(
             Name='CHS',
             Customer_Service_Email__c='test@gmail.com',
             Customer_Service_Phone__c='555-555-5555',
-            Short_Code__c='CHS'
+            Short_Code__c='CHS',
+            Legal_Entity__c = le.Id
             ); 
         insert bu;
 
