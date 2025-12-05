@@ -3,6 +3,11 @@ public with sharing class DepositTriggerHandler {
     public static void beforeInsert(List<Deposit__c> newList) {
         if (newList == null || newList.isEmpty()) return;
 
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
+
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);
 
@@ -11,6 +16,11 @@ public with sharing class DepositTriggerHandler {
 
     public static void beforeUpdate(List<Deposit__c> newList, Map<Id, Deposit__c> oldMap) {
         if (newList == null || newList.isEmpty()) return;
+
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
 
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);

@@ -6,6 +6,11 @@ public with sharing class PaymentTriggerHandler {
     public static void beforeInsert(List<Payment__c> newList) {
         if (newList == null || newList.isEmpty()) return;
 
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
+
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);
 
@@ -24,6 +29,11 @@ public with sharing class PaymentTriggerHandler {
         Map<Id, Payment__c> oldMap
     ) {
         if (newList == null || newList.isEmpty()) return;
+
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
 
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);

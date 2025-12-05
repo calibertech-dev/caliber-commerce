@@ -3,6 +3,11 @@ public with sharing class ProposalTriggerHandler {
     public static void beforeInsert(List<Proposal__c> newList) {
         if (newList == null || newList.isEmpty()) return;
 
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
+
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);
 
@@ -11,6 +16,11 @@ public with sharing class ProposalTriggerHandler {
 
     public static void beforeUpdate(List<Proposal__c> newList, Map<Id, Proposal__c> oldMap) {
         if (newList == null || newList.isEmpty()) return;
+
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
 
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);

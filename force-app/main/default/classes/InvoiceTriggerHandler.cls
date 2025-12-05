@@ -6,6 +6,11 @@ public with sharing class InvoiceTriggerHandler {
     public static void beforeInsert(List<Invoice__c> newList) {
         if (newList == null || newList.isEmpty()) return;
 
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
+
         // 1) Assign Service Relationship
         ServiceRelationshipAssignmentService.assign(newList);
 
@@ -16,6 +21,11 @@ public with sharing class InvoiceTriggerHandler {
 
     public static void beforeUpdate(List<Invoice__c> newList, Map<Id, Invoice__c> oldMap) {
         if (newList == null || newList.isEmpty()) return;
+
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
 
         // 1) Assign Service Relationship
         ServiceRelationshipAssignmentService.assign(newList);

@@ -3,6 +3,11 @@ public with sharing class CreditMemoTriggerHandler {
     public static void beforeInsert(List<Credit_Memo__c> newList) {
         if (newList == null || newList.isEmpty()) return;
 
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
+
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);
 
@@ -11,6 +16,11 @@ public with sharing class CreditMemoTriggerHandler {
 
     public static void beforeUpdate(List<Credit_Memo__c> newList, Map<Id, Credit_Memo__c> oldMap) {
         if (newList == null || newList.isEmpty()) return;
+
+        // BU FIREWALL
+        List<SObject> sobjs = new List<SObject>();
+        sobjs.addAll(newList);
+        BusinessUnitFirewallService.enforceBusinessUnitAccess(sobjs);
 
         // 1) Service Relationship assignment
         ServiceRelationshipAssignmentService.assign(newList);
