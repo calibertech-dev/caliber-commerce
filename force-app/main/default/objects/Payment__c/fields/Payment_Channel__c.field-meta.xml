@@ -7,33 +7,7 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
-        <valueSetDefinition>
-            <sorted>true</sorted>
-            <value>
-                <fullName>Auto-Pay</fullName>
-                <default>false</default>
-                <label>Auto-Pay</label>
-            </value>
-            <value>
-                <fullName>In-Person</fullName>
-                <default>true</default>
-                <label>In-Person</label>
-            </value>
-            <value>
-                <fullName>Phone</fullName>
-                <default>false</default>
-                <label>Phone</label>
-            </value>
-            <value>
-                <fullName>Portal</fullName>
-                <default>false</default>
-                <label>Portal</label>
-            </value>
-            <value>
-                <fullName>US Mail</fullName>
-                <default>false</default>
-                <label>US Mail</label>
-            </value>
-        </valueSetDefinition>
+        <restricted>true</restricted>
+        <valueSetName>Payment_Channel</valueSetName>
     </valueSet>
 </CustomField>

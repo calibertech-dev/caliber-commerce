@@ -9,6 +9,6 @@
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
-        <valueSetName>Project_Fulfillment_Route</valueSetName>
+        <valueSetName>Proposal_Fulfillment_Route</valueSetName>
     </valueSet>
 </CustomField>
