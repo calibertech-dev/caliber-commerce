@@ -5,8 +5,8 @@
       "versionNumber": "0.1.0.NEXT",
       "path": "force-app",
       "default": true,
-      "package": "caliber-commerce",
-      "versionDescription": "caliber-commerce package",
+      "package": "Caliber Commerce",
+      "versionDescription": "Proposals, Invoices, Payments and more for Caliber Platform",
       "dependencies": [
         {
           "package": "caliber-core"
