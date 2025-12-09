@@ -32,7 +32,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Unit_Of_Measure__c</field>
+                <field>Unit_of_Measure__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

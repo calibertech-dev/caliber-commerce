@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allow_Sell__c</fullName>
+    <description>Whether this Business Unit can sell this product.</description>
+    <defaultValue>true</defaultValue>
+    <externalId>false</externalId>
+    <label>Allow Sell</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

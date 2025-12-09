@@ -4,7 +4,7 @@
     <fields>Name</fields>
     <fields>Product_Type__c</fields>
     <fields>Special_Conditions__c</fields>
-    <fields>Unit_Of_Measure__c</fields>
+    <fields>Unit_of_Measure__c</fields>
     <fields>Quantity__c</fields>
     <fields>Unit_Price__c</fields>
     <fields>Total_Price__c</fields>

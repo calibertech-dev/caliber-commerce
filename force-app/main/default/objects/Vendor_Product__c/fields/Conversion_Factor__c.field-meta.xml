@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conversion_Factor__c</fullName>
+    <description>Number of internal base units per one vendor unit (e.g. 5 for a 5-gallon pail).</description>
+    <externalId>false</externalId>
+    <label>Conversion Factor</label>
+    <precision>16</precision>
+    <scale>6</scale>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allow_Purchase__c</fullName>
+    <description>Whether this Business Unit can purchase this product.</description>
+    <defaultValue>true</defaultValue>
+    <externalId>false</externalId>
+    <label>Allow Purchase</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>
