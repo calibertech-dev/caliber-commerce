@@ -5,8 +5,8 @@
       "versionNumber": "0.1.0.NEXT",
       "path": "force-app",
       "default": true,
-      "package": "Caliber Commerce",
-      "versionDescription": "Proposals, Invoices, Payments and more for Caliber Platform",
+      "package": "Caliber Commerce and Procurement",
+      "versionDescription": "Proposals, Sales Orders, Invoices, Payments, Purchase Orders and more for Caliber Platform",
       "dependencies": [
         {
           "package": "caliber-core"

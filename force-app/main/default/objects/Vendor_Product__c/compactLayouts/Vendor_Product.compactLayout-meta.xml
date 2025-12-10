@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vendor_Product</fullName>
+    <fields>Name</fields>
+    <fields>Vendor__c</fields>
+    <fields>Product__c</fields>
+    <fields>Vendor_SKU__c</fields>
+    <fields>Vendor_UOM__c</fields>
+    <fields>Is_Active__c</fields>
+    <label>Vendor Product</label>
+</CompactLayout>

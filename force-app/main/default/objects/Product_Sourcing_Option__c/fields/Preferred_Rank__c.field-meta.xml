@@ -5,9 +5,10 @@
     <externalId>false</externalId>
     <label>Preferred Rank</label>
     <precision>3</precision>
-    <scale>0</scale>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
+    <scale>0</scale>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Number</type>
+    <unique>false</unique>
 </CustomField>

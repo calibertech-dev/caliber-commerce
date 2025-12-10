@@ -2,12 +2,11 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Base_Cost_Per_Vendor_Unit__c</fullName>
     <description>Standard cost per vendor unit, before BU-specific contracts.</description>
-    <externalId>false</externalId>
     <label>Base Cost Per Vendor Unit</label>
     <precision>16</precision>
-    <scale>4</scale>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
+    <scale>4</scale>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Currency</type>
 </CustomField>

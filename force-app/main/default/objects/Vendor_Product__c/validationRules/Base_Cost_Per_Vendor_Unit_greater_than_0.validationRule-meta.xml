@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Base_Cost_Per_Vendor_Unit_greater_than_0</fullName>
+    <active>true</active>
+    <errorConditionFormula>Base_Cost_Per_Vendor_Unit__c  &lt; 0</errorConditionFormula>
+    <errorDisplayField>Base_Cost_Per_Vendor_Unit__c</errorDisplayField>
+    <errorMessage>Value must be greater than or equal to 0.</errorMessage>
+</ValidationRule>

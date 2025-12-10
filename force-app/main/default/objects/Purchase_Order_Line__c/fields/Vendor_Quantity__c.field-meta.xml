@@ -5,9 +5,10 @@
     <externalId>false</externalId>
     <label>Vendor Quantity</label>
     <precision>16</precision>
-    <scale>3</scale>
     <required>true</required>
-    <trackFeedHistory>false</trackFeedHistory>
+    <scale>3</scale>
     <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Number</type>
+    <unique>false</unique>
 </CustomField>

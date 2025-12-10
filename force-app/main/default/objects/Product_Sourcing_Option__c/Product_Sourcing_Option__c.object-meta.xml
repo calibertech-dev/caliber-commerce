@@ -141,6 +141,7 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Product_Sourcing_Option</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -152,9 +153,9 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-        <label>Product Sourcing Option</label>
+    <label>Product Sourcing Option</label>
     <nameField>
-        <label>Sourcing Option Name</label>
+        <label>Sourcing Option</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>

@@ -14,7 +14,7 @@
                 <fullName>Due on Receipt</fullName>
                 <default>true</default>
                 <label>Due on Receipt</label>
-            </value>            
+            </value>
             <value>
                 <fullName>Net 7</fullName>
                 <default>false</default>
@@ -44,7 +44,7 @@
                 <fullName>Custom</fullName>
                 <default>false</default>
                 <label>Custom</label>
-            </value>            
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

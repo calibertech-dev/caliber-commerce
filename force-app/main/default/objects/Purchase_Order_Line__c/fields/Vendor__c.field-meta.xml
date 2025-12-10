@@ -21,7 +21,6 @@
     <relationshipLabel>Purchase Order Lines</relationshipLabel>
     <relationshipName>Vendor_Purchase_Order_Lines</relationshipName>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
